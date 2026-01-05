@@ -1,5 +1,7 @@
 data/chaldea-data
 .vscode/
 *.ipynb
+config.dev.json
+config.prod.json
 deploy.sh
 fgo-calc-backend
