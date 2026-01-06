@@ -5,144 +5,333 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FGO 最优羁绊组队求解器</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css" />
+    <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         :root {
             --pico-font-size: 100%;
+            --pico-border-radius: 0.75rem;
+            --avatar-size: 100px;
+            --ce-height: 110px;
+        }
+        @media (max-width: 768px) {
+            :root {
+                --avatar-size: 64px;
+                --ce-height: 88px;
+            }
+        }
+        @media (max-width: 480px) {
+            :root {
+                --avatar-size: 56px;
+                --ce-height: 78px;
+            }
         }
         body {
-            padding: 2rem;
-            max-width: 1280px;
+            padding: 1rem;
+            max-width: 1400px;
             margin: 0 auto;
+            background-color: var(--pico-background-color);
         }
-        .grid {
-            grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
-            gap: 0.5rem;
+        h1 {
+            margin-bottom: 1.5rem;
+            text-align: center;
+            font-weight: 800;
+        }
+        .grid-config {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        .card-section {
+            margin-bottom: 1.5rem;
+            box-shadow: var(--pico-card-sectionning-background-color);
         }
         .avatar-container {
             position: relative;
             cursor: pointer;
+            transition: transform 0.2s;
+            background: var(--pico-card-background-color);
+            padding: 0.5rem;
+            border-radius: var(--pico-border-radius);
+            border: 1px solid transparent;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100%;
+            width: 100%;
+            min-width: 0;
+        }
+        .avatar-container:hover {
+            transform: translateY(-2px);
+            border-color: var(--pico-primary);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
         .avatar-container img {
-            width: 80px;
-            height: 80px;
-            border-radius: var(--pico-border-radius);
+            width: var(--avatar-size);
+            height: var(--avatar-size);
+            border-radius: calc(var(--pico-border-radius) - 0.25rem);
             display: block;
+            background: #eee;
+            object-fit: cover;
+        }
+        .avatar-container img.ce-img {
+            height: var(--ce-height);
+            object-fit: contain;
+            background: #222;
         }
         .avatar-container .name {
             font-size: 0.75rem;
             text-align: center;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            margin-top: 0.5rem;
+            line-height: 1.2;
+            color: var(--pico-color);
             word-break: break-all;
+            width: 100%;
         }
         .avatar-container .contribution {
             font-size: 0.7rem;
             text-align: center;
             color: var(--pico-primary);
             font-weight: bold;
+            margin-top: 2px;
         }
         .avatar-container .remove-btn {
             position: absolute;
-            top: -5px;
-            right: -5px;
-            width: 20px;
-            height: 20px;
+            top: -8px;
+            right: -8px;
+            width: 24px;
+            height: 24px;
             border-radius: 50%;
-            background-color: red;
+            background-color: #f44336;
             color: white;
-            border: none;
+            border: 2px solid white;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 12px;
-            line-height: 1;
-        }
-        .result-avatar-overlay {
-            position: absolute;
-            top: 0;
-            right: 0;
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
-        }
-        .result-avatar-overlay button {
-            width: 24px;
-            height: 24px;
-            font-size: 14px;
             padding: 0;
-            margin: 0;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+            z-index: 20;
+            transition: background-color 0.2s, transform 0.2s;
         }
-        dialog .grid {
-            max-height: 60vh;
-            overflow-y: auto;
+        .avatar-container .remove-btn:hover {
+            background-color: #d32f2f;
+            transform: scale(1.15);
+        }
+        .selection-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(calc(var(--avatar-size) + 20px), 1fr));
+            gap: 1rem;
+            margin-top: 0.5rem;
+            min-height: 120px;
+            padding: 1rem;
+            background: rgba(0,0,0,0.02);
+            border-radius: var(--pico-border-radius);
+            border: 1px dashed var(--pico-muted-border-color);
         }
         .team-result {
-            border: 1px solid var(--pico-primary-border);
+            border: 1px solid var(--pico-border-color);
             padding: 1rem;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             border-radius: var(--pico-border-radius);
+            background: var(--pico-card-background-color);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
         }
         .team-grid {
             display: grid;
-            grid-template-columns: repeat(6, 1fr);
+            grid-template-columns: repeat(auto-fill, minmax(calc(var(--avatar-size) + 20px), 1fr));
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+        .team-section-title {
+            font-size: 0.75rem;
+            font-weight: bold;
+            color: var(--pico-muted-color);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05rem;
+            border-left: 3px solid var(--pico-primary);
+            padding-left: 8px;
+        }
+        .modal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(calc(var(--avatar-size) + 20px), 1fr));
             gap: 1rem;
+            max-height: 60vh;
+            overflow-y: auto;
+            padding: 0.5rem;
         }
         .placeholder {
-            width: 80px;
-            height: 80px;
+            width: var(--avatar-size);
+            height: var(--avatar-size);
             border: 2px dashed var(--pico-muted-border-color);
             border-radius: var(--pico-border-radius);
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--pico-muted-color);
+            background: rgba(0,0,0,0.02);
         }
-        #trait-modal > article {
-            max-width: 90ch;
+        .placeholder::after {
+            content: '?';
+            font-size: 1.5rem;
+            font-weight: bold;
         }
-
+        .trait-tag {
+            display: inline-flex;
+            align-items: center;
+            background: var(--pico-primary-background);
+            color: var(--pico-primary-inverse);
+            padding: 0.2rem 0.6rem;
+            border-radius: 2rem;
+            font-size: 0.75rem;
+            margin: 0.2rem;
+            border: 1px solid var(--pico-primary-border);
+        }
+        .trait-tag i {
+            margin-left: 4px;
+            cursor: pointer;
+        }
+        .event-bonus-container {
+            margin-top: 4px;
+            width: 110%;
+            min-height: 32px;
+        }
+        .event-bonus-item {
+            display: flex;
+            align-items: stretch;
+            font-size: 0.65rem;
+            background: rgba(var(--pico-primary-rgb), 0.1);
+            color: var(--pico-primary);
+            border: 1px solid rgba(var(--pico-primary-rgb), 0.2);
+            border-radius: 4px;
+            margin-bottom: 2px;
+            overflow: hidden;
+            width: 100%;
+        }
+        .event-bonus-val {
+            background: var(--pico-primary);
+            color: white;
+            padding: 0 4px;
+            font-weight: bold;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+        }
+        .event-bonus-name {
+            padding: 2px 4px;
+            white-space: normal;
+            font-size: 0.45rem;
+            line-height: 1.1;
+            flex-grow: 1;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            word-break: break-all;
+        }
+        .btn-add {
+            font-size: 0.85rem;
+            padding: 0.4rem 0.8rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid var(--pico-muted-border-color);
+            padding-bottom: 0.5rem;
+        }
+        .section-header h6 {
+            margin-bottom: 0;
+        }
+        .result-actions {
+            position: absolute;
+            left: calc(50% + var(--avatar-size) / 2 + 2px);
+            top: 0.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            width: auto;
+            z-index: 10;
+        }
+        .result-actions button {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            padding: 0;
+            margin: 0;
+            height: 24px;
+            line-height: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--pico-card-background-color);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-width: 1px;
+        }
+        .result-actions button i {
+            width: 14px;
+            height: 14px;
+        }
+        
+        #results-container {
+            transition: all 0.5s ease-in-out;
+            animation: fadeIn 0.5s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
         @media (max-width: 768px) {
-            .team-grid {
-                grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+            body {
+                padding: 0.5rem;
             }
-            .result-avatar-overlay {
-                flex-direction: row;
-                top: 52px;
-                bottom: auto;
-                left: 50%;
-                transform: translateX(-50%);
-                background: rgba(0,0,0,0.5);
-                border-radius: 5px;
-                padding: 2px;
+            .grid-config {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
     </style>
 </head>
 <body>
     <main class="container">
-        <h1>FGO 最优羁绊组队求解器</h1>
+        <h1><i data-lucide="calculator"></i> FGO 最优羁绊求解器</h1>
 
-        <article>
-            <details open>
-                <summary>💡 Hint</summary>
+        <article class="card-section">
+            <details>
+                <summary><i data-lucide="info" style="width: 18px; vertical-align: middle; margin-right: 4px;"></i> 使用提示 (Hint)</summary>
                 <ul>
                     <li>本项目已开源：<a href="https://github.com/pikaball/fgo-calc/">github</a></li>
-                    <li>计算时不考虑前排加成</li>
-                    <li>冠位战情形：可以将cost+12并设置礼装数为6，筛选特性为对应职阶，基础羁绊4000左右</li>
-                    <li>带非羁绊加成礼装（黑杯等）情形：减掉相应cost和礼装数</li>
-                    <li>15绊情形：减去该从者对应的cost，并且从者数-1</li>
+                    <li>计算时不考虑前排从者自身的礼装羁绊加成（仅考虑全局加成）。</li>
+                    <li><strong>冠位战：</strong>Cost+12，礼装数设为6，特性筛选对应职阶。</li>
+                    <li><strong>特殊礼装：</strong>若带黑杯等非羁绊礼装，请在限制中减去对应Cost和礼装位。</li>
+                    <li><strong>15绊从者：</strong>减去该从者Cost，从者数量上限-1。</li>
                 </ul>
             </details>
         </article>
 
-        <article>
-            <header>限制条件</header>
-            <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+        <article class="card-section">
+            <header><i data-lucide="settings-2" style="width: 20px; vertical-align: middle; margin-right: 8px;"></i> 限制与配置</header>
+            <div class="grid-config">
                 <label>
                     Cost 上限
                     <input type="number" id="cost-limit" value="116">
                 </label>
                 <label>
-                    从者数量上限
+                    从者数量
                     <input type="number" id="svt-limit" value="5" max="5" min="1">
                 </label>
                 <label>
-                    礼装数量上限
+                    礼装数量
                     <input type="number" id="ce-limit" value="5" max="5" min="1">
                 </label>
                 <label>
@@ -150,41 +339,70 @@
                     <input type="number" id="support-limit" value="1" max="2" min="0">
                 </label>
                 <label>
-                    基础羁绊值
+                    基础羁绊
                     <input type="number" id="base-bond" value="1000">
                 </label>
+                <label>
+                    服务器
+                    <select id="server-select">
+                        <option value="JP">JP (日服)</option>
+                        <option value="CN">CN (国服)</option>
+                    </select>
+                </label>
+            </div>
+            
+            <label style="margin-bottom: 1.5rem;">
+                <input type="checkbox" id="enable-event-bonus">
+                计算活动羁绊加成
+            </label>
+
+            <div class="section-header">
+                <h6><i data-lucide="filter" style="width: 16px; vertical-align: middle;"></i> 特性筛选 (OR)</h6>
+                <div style="display: flex; gap: 8px;">
+                    <button class="outline btn-add" onclick="openTraitModal()"><i data-lucide="plus"></i> 选择特性</button>
+                    <button class="outline secondary btn-add" onclick="clearTraits()"><i data-lucide="trash-2"></i> 清空</button>
+                </div>
+            </div>
+            <div id="selected-traits" class="grid" style="grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); margin-bottom: 1.5rem;"></div>
+
+            <div class="grid">
+                <div>
+                    <div class="section-header">
+                        <h6>必选从者</h6>
+                        <button class="outline btn-add" onclick="openModal('svt', 'include')"><i data-lucide="user-plus"></i> 添加</button>
+                    </div>
+                    <div class="selection-grid" id="include-svt-list"></div>
+                </div>
+                <div>
+                    <div class="section-header">
+                        <h6>排除从者</h6>
+                        <button class="outline btn-add" onclick="openModal('svt', 'exclude')"><i data-lucide="user-minus"></i> 添加</button>
+                    </div>
+                    <div class="selection-grid" id="exclude-svt-list"></div>
+                </div>
             </div>
 
-            <hgroup>
-                <h6>特性筛选 (OR)</h6>
-                <p>在下方选择特性后，将只在符合任意已选特性的从者中进行计算。</p>
-            </hgroup>
-           <button class="outline" onclick="openTraitModal()">＋ 选择特性</button>
-           <div style="margin: .5rem 0;">
-               <strong>已选特性:</strong>
-               <div id="selected-traits" class="grid" style="grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));"></div>
-           </div>
+            <hr>
 
-            <h6>从者限制</h6>
-            <strong>必选从者:</strong>
-            <div class="grid" id="include-svt-list"></div>
-            <button class="outline" onclick="openModal('svt', 'include')">＋ 添加必选从者</button>
-            <br><br>
-            <strong>排除从者:</strong>
-            <div class="grid" id="exclude-svt-list"></div>
-            <button class="outline" onclick="openModal('svt', 'exclude')">＋ 添加排除从者</button>
-
-            <h6>礼装限制</h6>
-            <strong>必选礼装:</strong>
-            <div class="grid" id="include-ce-list"></div>
-            <button class="outline" onclick="openModal('ce', 'include')">＋ 添加必选礼装</button>
-            <br><br>
-            <strong>排除礼装:</strong>
-            <div class="grid" id="exclude-ce-list"></div>
-            <button class="outline" onclick="openModal('ce', 'exclude')">＋ 添加排除礼装</button>
+            <div class="grid">
+                <div>
+                    <div class="section-header">
+                        <h6>必选礼装</h6>
+                        <button class="outline btn-add" onclick="openModal('ce', 'include')"><i data-lucide="plus-square"></i> 添加</button>
+                    </div>
+                    <div class="selection-grid" id="include-ce-list"></div>
+                </div>
+                <div>
+                    <div class="section-header">
+                        <h6>排除礼装</h6>
+                        <button class="outline btn-add" onclick="openModal('ce', 'exclude')"><i data-lucide="minus-square"></i> 添加</button>
+                    </div>
+                    <div class="selection-grid" id="exclude-ce-list"></div>
+                </div>
+            </div>
 
             <footer>
-                <button id="calculate-btn" onclick="calculate()">开始计算</button>
+                <button id="calculate-btn" onclick="calculate()" class="contrast"><i data-lucide="play" style="width: 18px; vertical-align: middle; margin-right: 8px;"></i> 开始计算</button>
             </footer>
         </article>
 
@@ -199,22 +417,24 @@
                     <a href="#close" aria-label="Close" class="close" onclick="closeSvtDiffModal()"></a>
                     <span id="svt-diff-modal-title">选择从者形态</span>
                 </header>
-                <div id="svt-diff-modal-grid" class="grid"></div>
+                <div id="svt-diff-modal-grid" class="modal-grid"></div>
                 <footer>
                     <button class="secondary" onclick="closeSvtDiffModal()">取消</button>
                 </footer>
             </article>
         </dialog>
 
-        <footer style="text-align: center; margin-top: 2rem;">
-            <img src="/static/author.png" alt="author avatar" style="width: 60px; height: 60px; border-radius: 50%;">
-            <p style="margin: 0.5rem 0 0;">
-                <strong>pikaball</strong>
-            </p>
-            <p style="margin: 0.25rem 0;">
-                <a href="https://github.com/pikaball" target="_blank">GitHub</a> | 
-                <a href="https://pikaball.cc" target="_blank">Blog</a> | 
-                <a href="https://space.bilibili.com/3546788520790068" target="_blank">Bilibili</a>
+        <footer style="text-align: center; margin-top: 3rem; border-top: 1px solid var(--pico-muted-border-color); padding-top: 2rem;">
+            <div style="display: flex; align-items: center; justify-content: center; gap: 1rem; margin-bottom: 1rem;">
+                <img src="/static/author.png" alt="author avatar" style="width: 50px; height: 50px; border-radius: 50%; border: 2px solid var(--pico-primary);">
+                <div style="text-align: left;">
+                    <strong style="display: block; font-size: 1.1rem;">pikaball</strong>
+                </div>
+            </div>
+            <p style="margin: 0.5rem 0;">
+                <a href="https://github.com/pikaball" target="_blank" class="secondary"><i data-lucide="github" style="width: 16px; vertical-align: middle;"></i> GitHub</a> | 
+                <a href="https://pikaball.cc" target="_blank" class="secondary"><i data-lucide="globe" style="width: 16px; vertical-align: middle;"></i> Blog</a> | 
+                <a href="https://space.bilibili.com/3546788520790068" target="_blank" class="secondary"><i data-lucide="video" style="width: 16px; vertical-align: middle;"></i> Bilibili</a>
             </p>
         </footer>
     </main>
@@ -253,7 +473,7 @@
                 <span id="modal-title"></span>
             </header>
             <input type="search" id="modal-search" placeholder="搜索名称...">
-            <div id="modal-grid" class="grid"></div>
+            <div id="modal-grid" class="modal-grid"></div>
             <footer>
                 <button class="secondary" onclick="closeModal()">关闭</button>
             </footer>
@@ -273,6 +493,7 @@
 
         // --- 数据加载与初始化 ---
         window.onload = async () => {
+            lucide.createIcons();
             try {
                 const response = await fetch('/api/data');
                 ALL_DATA = await response.json();
@@ -295,25 +516,18 @@
             const items = [...SELECTIONS.allowTraits].map(id => [id, ALL_DATA.traits[id]]).filter(([,name]) => name && name.trim().length > 0);
             items.sort(([,a],[,b]) => a.localeCompare(b, 'zh-Hans-CN'));
             for (const [id, name] of items) {
-                const label = document.createElement('label');
-                const input = document.createElement('input');
-                input.type = 'checkbox';
-                input.checked = true;
-                input.onchange = (e) => {
-                    if (!e.target.checked) {
-                        SELECTIONS.allowTraits.delete(Number(id));
-                        renderSelectedTraits();
-                        // 如果特性弹窗是打开的，同步更新其中的勾选框
-                        const traitCheckbox = document.querySelector(`#trait-modal-grid input[data-id='${id}']`);
-                        if (traitCheckbox) {
-                            traitCheckbox.checked = false;
-                        }
-                    }
+                const tag = document.createElement('span');
+                tag.className = 'trait-tag';
+                tag.innerHTML = `${name} <i data-lucide="x-circle" style="width: 14px; height: 14px;"></i>`;
+                tag.onclick = () => {
+                    SELECTIONS.allowTraits.delete(Number(id));
+                    renderSelectedTraits();
+                    const traitCheckbox = document.querySelector(`#trait-modal-grid input[data-id='${id}']`);
+                    if (traitCheckbox) traitCheckbox.checked = false;
                 };
-                label.appendChild(input);
-                label.append(` ${name}`);
-                sel.appendChild(label);
+                sel.appendChild(tag);
             }
+            refreshIcons();
         }
 
         // 可搜索的特性筛选（不再一次性全部渲染）
@@ -357,6 +571,13 @@
                 hint.style.opacity = '0.8';
                 hint.textContent = '无匹配特性';
                 container.appendChild(hint);
+            }
+        }
+
+        function clearTraits() {
+            if (confirm('确定要清空所有已选特性吗？')) {
+                SELECTIONS.allowTraits.clear();
+                renderSelectedTraits();
             }
         }
 
@@ -437,14 +658,20 @@
             const grid = document.getElementById('modal-grid');
             grid.innerHTML = '';
             const items = currentModal.type === 'svt' ? ALL_DATA.servants : ALL_DATA.craftEssences;
-            const nameKey = currentModal.type === 'svt' ? 'name' : 'name';
 
             items
-                .filter(item => item[nameKey]?.toLowerCase().includes(filter.toLowerCase()))
+                .filter(item => item.name?.toLowerCase().includes(filter.toLowerCase()))
                 .forEach(item => {
-                    const img = currentModal.type === 'svt' ? item.diff.default.img : item.img;
-                    const name = item[nameKey];
-                    const div = createAvatar(item.id, name, img, () => addItem(item.id));
+                    let img;
+                    if (currentModal.type === 'svt') {
+                        // 优先使用 default，如果没有则使用第一个形态的图片
+                        const detail = item.diff.default || Object.values(item.diff)[0];
+                        img = detail ? detail.img : '';
+                    } else {
+                        img = item.img;
+                    }
+                    const name = item.name;
+                    const div = createAvatar(item.id, name, img, () => addItem(item.id), null, currentModal.type === 'ce');
                     grid.appendChild(div);
                 });
         }
@@ -462,9 +689,19 @@
 
             for (const [id, name] of candidates) {
                 const label = document.createElement('label');
+                label.style.display = 'flex';
+                label.style.alignItems = 'center';
+                label.style.gap = '8px';
+                label.style.padding = '4px 8px';
+                label.style.borderRadius = '4px';
+                label.style.cursor = 'pointer';
+                label.onmouseover = () => label.style.background = 'rgba(0,0,0,0.05)';
+                label.onmouseout = () => label.style.background = 'transparent';
+
                 const input = document.createElement('input');
                 input.type = 'checkbox';
                 input.dataset.id = id;
+                input.style.margin = '0';
                 input.checked = SELECTIONS.allowTraits.has(Number(id));
                 input.onchange = (e) => {
                     if (e.target.checked) {
@@ -475,7 +712,7 @@
                     renderSelectedTraits();
                 };
                 label.appendChild(input);
-                label.append(` ${name}`);
+                label.append(`${name}`);
                 grid.appendChild(label);
             }
         }
@@ -544,10 +781,11 @@
                         img = type === 'svt' ? item.diff.default.img : item.img;
                         name = item.name;
                     }
-                    const div = createAvatar(id, name, img, null, () => removeItem(type, list, id));
+                    const div = createAvatar(id, name, img, null, () => removeItem(type, list, id), type === 'ce');
                     container.appendChild(div);
                 }
             });
+            refreshIcons();
         }
 
         // --- 计算逻辑 ---
@@ -562,6 +800,8 @@
             params.append('celimit', document.getElementById('ce-limit').value);
             params.append('supportlimit', document.getElementById('support-limit').value);
             params.append('basebond', document.getElementById('base-bond').value);
+            params.append('server', document.getElementById('server-select').value);
+            params.append('enable_event_bonus', document.getElementById('enable-event-bonus').checked);
 
             SELECTIONS.allowTraits.forEach(id => params.append('allowtraits', id));
             SELECTIONS.includeSvt.forEach((diff, id) => {
@@ -598,8 +838,12 @@
 
             if (duration !== undefined) {
                 const p = document.createElement('p');
-                p.textContent = `计算耗时: ${duration} ms`;
+                p.style.textAlign = 'right';
+                p.style.fontSize = '0.8rem';
+                p.style.opacity = '0.7';
+                p.innerHTML = `<i data-lucide="timer" style="width: 14px; vertical-align: middle;"></i> 计算耗时: ${duration} ms`;
                 list.appendChild(p);
+                refreshIcons();
             }
 
             if (!teams || teams.length === 0) {
@@ -613,8 +857,14 @@
                 teamDiv.className = 'team-result';
                 
                 const header = document.createElement('hgroup');
-                header.innerHTML = `<h6>方案 ${index + 1}</h6><p>总羁绊: ${team.TotalBond}, 总Cost: ${team.TotalCost}</p>`;
+                header.style.marginBottom = '0.75rem';
+                header.innerHTML = `<h5><i data-lucide="award" style="width: 20px; vertical-align: middle; margin-right: 8px;"></i> 方案 ${index + 1}</h5><p><mark>总羁绊: ${team.TotalBond}</mark> <small>| 总Cost: ${team.TotalCost}</small></p>`;
                 teamDiv.appendChild(header);
+
+                const svtTitle = document.createElement('div');
+                svtTitle.className = 'team-section-title';
+                svtTitle.textContent = '推荐从者阵容';
+                teamDiv.appendChild(svtTitle);
 
                 const svtGrid = document.createElement('div');
                 svtGrid.className = 'team-grid';
@@ -630,22 +880,48 @@
                         if (detail.name === "默认") {
                             name = svt.name;
                         } else {
-                            name = `${svt.name} (形态：${detail.name})`;
+                            name = `${svt.name} (${detail.name})`;
                         }
                         const div = createAvatar(svt.id, name, detail.img, () => showSvtTraits(svt, diffKey));
+
+                        const enableEventBonus = document.getElementById('enable-event-bonus').checked;
+                        const server = document.getElementById('server-select').value;
+                        if (enableEventBonus && svt.event_bonuses && svt.event_bonuses[server]) {
+                            const bonuses = svt.event_bonuses[server];
+                            if (bonuses && bonuses.length > 0) {
+                                const bonusContainer = document.createElement('div');
+                                bonusContainer.className = 'event-bonus-container';
+                                bonuses.forEach(b => {
+                                    const item = document.createElement('div');
+                                    item.className = 'event-bonus-item';
+                                    item.innerHTML = `<span class="event-bonus-val">+${b.bonus}%</span><span class="event-bonus-name" title="${b.name}">${b.name}</span>`;
+                                    bonusContainer.appendChild(item);
+                                });
+                                div.appendChild(bonusContainer);
+                            }
+                        }
                         
-                        const overlay = document.createElement('div');
-                        overlay.className = 'result-avatar-overlay';
-                        overlay.innerHTML = `
-                            <button title="加入必选" onclick="quickAdd(event, 'svt', 'include', ${svt.id}, '${diffKey}')">➕</button>
-                            <button title="加入排除" onclick="quickAdd(event, 'svt', 'exclude', ${svt.id})">➖</button>
+                        const actions = document.createElement('div');
+                        actions.className = 'result-actions';
+                        actions.innerHTML = `
+                            <button class="outline" title="加入必选" onclick="quickAdd(event, 'svt', 'include', ${svt.id}, '${diffKey}')">
+                                <i data-lucide="plus"></i>
+                            </button>
+                            <button class="outline secondary" title="加入排除" onclick="quickAdd(event, 'svt', 'exclude', ${svt.id})">
+                                <i data-lucide="minus"></i>
+                            </button>
                         `;
-                        div.appendChild(overlay);
+                        div.appendChild(actions);
                         svtGrid.appendChild(div);
                     } else {
                         svtGrid.appendChild(createPlaceholder());
                     }
                 }
+
+                const ceTitle = document.createElement('div');
+                ceTitle.className = 'team-section-title';
+                ceTitle.textContent = '推荐礼装搭配';
+                teamDiv.appendChild(ceTitle);
 
                 const ceGrid = document.createElement('div');
                 ceGrid.className = 'team-grid';
@@ -655,20 +931,24 @@
                  for (let i = 0; i < ceLimit; i++) {
                     if (i < team.CraftEssences.length) {
                         const ce = team.CraftEssences[i];
-                        const div = createAvatar(ce.id, ce.name, ce.img);
+                        const div = createAvatar(ce.id, ce.name, ce.img, null, null, true);
 
                         const contributionSpan = document.createElement('div');
                         contributionSpan.className = 'contribution';
-                        contributionSpan.textContent = `+${ce.contribution}`;
+                        contributionSpan.textContent = `羁绊 +${ce.contribution}`;
                         div.appendChild(contributionSpan);
 
-                        const overlay = document.createElement('div');
-                        overlay.className = 'result-avatar-overlay';
-                        overlay.innerHTML = `
-                            <button title="加入必选" onclick="quickAdd(event, 'ce', 'include', ${ce.id})">➕</button>
-                            <button title="加入排除" onclick="quickAdd(event, 'ce', 'exclude', ${ce.id})">➖</button>
+                        const actions = document.createElement('div');
+                        actions.className = 'result-actions';
+                        actions.innerHTML = `
+                            <button class="outline" title="加入必选" onclick="quickAdd(event, 'ce', 'include', ${ce.id})">
+                                <i data-lucide="plus"></i>
+                            </button>
+                            <button class="outline secondary" title="加入排除" onclick="quickAdd(event, 'ce', 'exclude', ${ce.id})">
+                                <i data-lucide="minus"></i>
+                            </button>
                         `;
-                        div.appendChild(overlay);
+                        div.appendChild(actions);
                         ceGrid.appendChild(div);
                     } else {
                         ceGrid.appendChild(createPlaceholder());
@@ -676,21 +956,21 @@
                 }
 
                 if (team.SupportCraftEssences && team.SupportCraftEssences.length > 0) {
-                    const supportHeader = document.createElement('div');
-                    supportHeader.innerHTML = '<strong>助战礼装:</strong>';
-                    supportHeader.style.marginTop = '0.5rem';
-                    teamDiv.appendChild(supportHeader);
+                    const supportTitle = document.createElement('div');
+                    supportTitle.className = 'team-section-title';
+                    supportTitle.textContent = '建议助战礼装';
+                    teamDiv.appendChild(supportTitle);
 
                     const supportGrid = document.createElement('div');
                     supportGrid.className = 'team-grid';
                     teamDiv.appendChild(supportGrid);
 
                     team.SupportCraftEssences.forEach(ce => {
-                         const div = createAvatar(ce.id, ce.name, ce.img);
+                         const div = createAvatar(ce.id, ce.name, ce.img, null, null, true);
 
                         const contributionSpan = document.createElement('div');
                         contributionSpan.className = 'contribution';
-                        contributionSpan.textContent = `+${ce.contribution}`;
+                        contributionSpan.textContent = `羁绊 +${ce.contribution}`;
                         div.appendChild(contributionSpan);
                         
                         supportGrid.appendChild(div);
@@ -700,6 +980,7 @@
                 list.appendChild(teamDiv);
             });
             container.hidden = false;
+            refreshIcons();
         }
 
         function quickAdd(event, type, list, id, extra) {
@@ -714,7 +995,11 @@
         }
 
         // --- 辅助函数 ---
-        function createAvatar(id, name, imgSrc, clickHandler, removeHandler) {
+        function refreshIcons() {
+            lucide.createIcons();
+        }
+
+        function createAvatar(id, name, imgSrc, clickHandler, removeHandler, isCe = false) {
             const div = document.createElement('div');
             div.className = 'avatar-container';
             div.dataset.id = id;
@@ -724,6 +1009,7 @@
             img.src = imgSrc;
             img.alt = name;
             img.title = name;
+            if (isCe) img.className = 'ce-img';
             div.appendChild(img);
 
             const nameSpan = document.createElement('span');
@@ -734,7 +1020,7 @@
             if (removeHandler) {
                 const removeBtn = document.createElement('button');
                 removeBtn.className = 'remove-btn';
-                removeBtn.textContent = '×';
+                removeBtn.innerHTML = '<i data-lucide="x" style="width: 16px; height: 16px; stroke-width: 3;"></i>';
                 removeBtn.onclick = (e) => {
                     e.stopPropagation();
                     removeHandler();

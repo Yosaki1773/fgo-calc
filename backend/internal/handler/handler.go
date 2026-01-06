@@ -79,6 +79,13 @@ func (h *Handler) Calculate(c *gin.Context) {
 	if supportLimit > 2 {
 		supportLimit = 2
 	}
+
+	server := c.PostForm("server")
+	if server == "" {
+		server = "CN"
+	}
+	enableEventBonus := c.PostForm("enable_event_bonus") == "true"
+
 	results, duration := h.service.Optimize(
 		costLimit,
 		svtLimit,
@@ -91,6 +98,8 @@ func (h *Handler) Calculate(c *gin.Context) {
 		mapStr2Int(c.PostFormArray("includece")),
 		mapStr2Int(c.PostFormArray("excludece")),
 		baseBond,
+		server,
+		enableEventBonus,
 	)
 
 	c.JSON(http.StatusOK, gin.H{

@@ -8,8 +8,15 @@ type ServantDetail struct {
 	TraitSet map[int]struct{} `json:"-"`
 }
 
+type EventBonus struct {
+	Id    int    `json:"id"`
+	Name  string `json:"name"`
+	Bonus int    `json:"bonus"`
+}
+
 type Servant struct {
-	Id   int                      `json:"id"`
-	Name string                   `json:"name"`
-	Diff map[string]ServantDetail `json:"diff"`
+	Id           int                      `json:"id"`
+	Name         string                   `json:"name"`
+	Diff         map[string]ServantDetail `json:"diff"`
+	EventBonuses map[string][]EventBonus  `json:"event_bonuses"`
 }

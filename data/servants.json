@@ -34,6 +34,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_4053000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -70,6 +80,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_1059000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -129,6 +149,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_11018003.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -155,6 +179,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_5054000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -184,6 +212,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_1060000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -237,6 +275,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_4055003.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [
+                {
+                    "id": 80460,
+                    "name": "情人节2024_～前往巧克力之河的尽头～",
+                    "bonus": 50
+                }
+            ],
+            "JP": []
         }
     },
     {
@@ -264,6 +312,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_11013000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -291,6 +343,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_6050000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -340,6 +402,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_11017003.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -365,6 +437,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_28007000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -393,6 +475,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_25014000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -420,6 +506,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_7049000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -471,6 +567,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_5055003.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -550,6 +650,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_10017003.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -604,6 +708,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_33002001.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -635,6 +743,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_23009000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -668,6 +780,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_3055000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -694,6 +810,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_11019000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -782,6 +902,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_23006003.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -838,6 +962,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_23010003.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -870,6 +998,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_25016000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -896,6 +1028,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_23007000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -922,6 +1064,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_23008000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -1003,6 +1149,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_10018300.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -1087,6 +1237,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_2053003.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -1117,6 +1277,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_3056000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -1169,6 +1333,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_7050003.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -1198,6 +1366,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_28008000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -1244,6 +1416,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_28009001.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -1274,6 +1450,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_1061000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -1306,6 +1492,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_3057000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -1336,6 +1526,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_1062000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -1423,6 +1617,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_5058003.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -1448,6 +1646,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_28010000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 50
+                }
+            ]
         }
     },
     {
@@ -1483,6 +1691,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_9019000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -1514,6 +1726,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_3058000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -1551,6 +1767,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_7051000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -1622,6 +1842,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_28011001.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -1687,6 +1911,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_3059001.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -1735,6 +1963,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_40001003.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -1770,6 +2002,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_1063000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -1800,6 +2036,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_4058000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -1832,6 +2072,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_7052000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -1911,6 +2155,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_23011003.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -1963,6 +2211,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_3060003.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -2026,6 +2278,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_2054003.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -2054,6 +2310,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_10019000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -2115,6 +2375,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_4057003.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -2142,6 +2406,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_6051000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -2169,6 +2437,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_11021000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -2198,6 +2470,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_3061000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -2230,6 +2506,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_1064000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -2281,6 +2561,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_3062003.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -2310,6 +2594,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_11022000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -2338,6 +2626,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_28012000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -2371,6 +2663,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_1065000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -2399,6 +2695,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_6007100.png",
                 "cost": 7
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -2435,6 +2735,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_1019000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -2461,6 +2771,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_3017000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -2487,6 +2807,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_5025000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -2514,6 +2844,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_5016000.png",
                 "cost": 7
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -2542,6 +2882,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_2010000.png",
                 "cost": 7
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -2569,6 +2919,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_11003000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -2594,6 +2948,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_11001000.png",
                 "cost": 4
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -2626,6 +2990,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_4002000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -2653,6 +3027,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_6015000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -2679,6 +3063,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_6003000.png",
                 "cost": 7
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -2710,6 +3098,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_5020000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -2746,6 +3138,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_6021000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -2774,6 +3170,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_5022000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -2807,6 +3207,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_7023000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -2840,6 +3244,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_4023000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -2871,6 +3285,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_7022000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -2920,6 +3338,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_6019300.png",
                 "cost": 7
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -2954,6 +3382,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_4012000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -2989,6 +3427,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_3020000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -3022,6 +3464,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_5012000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -3083,6 +3529,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_1020300.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -3138,6 +3594,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_2008300.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -3199,6 +3665,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_1007400.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -3226,6 +3702,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_6009000.png",
                 "cost": 7
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -3253,6 +3733,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_2014000.png",
                 "cost": 7
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -3284,6 +3774,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_1012000.png",
                 "cost": 7
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -3310,6 +3810,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_5009000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -3346,6 +3850,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_3024000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -3380,6 +3888,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_2026000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -3407,6 +3919,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_5027000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -3458,6 +3974,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_2025003.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -3490,6 +4010,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_4024000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -3518,6 +4042,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_6024000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -3550,6 +4078,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_3025000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -3576,6 +4108,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_9004000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -3631,6 +4167,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_5028001.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -3662,6 +4202,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_2027000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -3693,6 +4237,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_1010000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -3724,6 +4272,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_6008000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -3753,6 +4305,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_3003000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -3781,6 +4343,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_3026000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -3815,6 +4381,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_2020000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -3845,6 +4415,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_3008000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -3881,6 +4461,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_4018000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -3938,6 +4522,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_5018300.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -3970,6 +4564,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_3027000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -4000,6 +4598,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_11004000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -4032,6 +4634,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_3028000.png",
                 "cost": 7
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -4087,6 +4693,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_5008300.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -4114,6 +4730,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_1017000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -4141,6 +4761,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_6025000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -4172,6 +4802,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_7024000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [
+                {
+                    "id": 80460,
+                    "name": "情人节2024_～前往巧克力之河的尽头～",
+                    "bonus": 20
+                }
+            ],
+            "JP": []
         }
     },
     {
@@ -4199,6 +4839,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_2023000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -4225,6 +4875,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_2016000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -4255,6 +4915,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_11005000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -4308,6 +4978,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_6026300.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -4344,6 +5024,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_1029000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -4373,6 +5063,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_7025000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -4400,6 +5100,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_7026000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -4433,6 +5137,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_10002000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -4466,6 +5174,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_10001000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -4500,6 +5212,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_1030000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -4529,6 +5245,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_23001000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -4555,6 +5275,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_10003000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -4581,6 +5305,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_5030000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -4609,6 +5337,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_6027000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -4668,6 +5400,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_7027300.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -4695,6 +5431,22 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_4025000.png",
                 "cost": 7
             }
+        },
+        "event_bonuses": {
+            "CN": [
+                {
+                    "id": 80460,
+                    "name": "情人节2024_～前往巧克力之河的尽头～",
+                    "bonus": 20
+                }
+            ],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -4719,6 +5471,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_9005000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -4779,6 +5541,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_7028300.png",
                 "cost": 3
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -4810,6 +5576,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_5032000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -4842,6 +5612,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_1031000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -4876,6 +5650,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_6028000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -4905,6 +5683,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_7029000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -4938,6 +5720,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_4027000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -4965,6 +5751,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_2028000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -4999,6 +5789,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_3029000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -5034,6 +5828,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_4026000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -5067,6 +5865,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_3030000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -5098,6 +5900,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_2021000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -5127,6 +5933,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_6029000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -5154,6 +5964,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_3014000.png",
                 "cost": 7
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -5184,6 +6004,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_1032000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -5213,6 +6043,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_6030000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -5244,6 +6078,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_6031000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -5272,6 +6110,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_10004000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -5300,6 +6142,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_10005000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -5331,6 +6177,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_5033000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -5361,6 +6211,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_3031000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -5388,6 +6242,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_5034000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -5445,6 +6303,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_25001003.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -5477,6 +6339,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_3032000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -5506,6 +6372,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_2022000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -5559,6 +6429,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_25002003.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -5590,6 +6464,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_6032000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [
+                {
+                    "id": 80460,
+                    "name": "情人节2024_～前往巧克力之河的尽头～",
+                    "bonus": 20
+                }
+            ],
+            "JP": []
         }
     },
     {
@@ -5616,6 +6500,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_2029000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -5642,6 +6530,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_5035000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -5673,6 +6565,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_7030000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -5699,6 +6595,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_5036000.png",
                 "cost": 7
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -5750,6 +6656,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_11006003.png",
                 "cost": 7
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -5781,6 +6697,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_4028000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -5844,6 +6770,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_4029300.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -5877,6 +6813,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_2030000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -5904,6 +6850,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_5038000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -5958,6 +6914,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_10007300.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -5985,6 +6945,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_6033000.png",
                 "cost": 7
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 30
+                }
+            ]
         }
     },
     {
@@ -6017,6 +6987,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_4030000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -6044,6 +7024,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_2031000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -6109,6 +7099,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_1033300.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -6142,6 +7142,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_3033000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -6175,6 +7179,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_5039000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -6203,6 +7211,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_2032000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -6235,6 +7247,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_3034000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -6266,6 +7282,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_6034000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -6294,6 +7314,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_7031000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -6331,6 +7355,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_23002000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -6363,6 +7391,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_1034000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -6396,6 +7428,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_25003000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -6427,6 +7463,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_1035000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -6461,6 +7507,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_10008000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -6496,6 +7546,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_5040000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -6524,6 +7578,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_7032000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -6581,6 +7645,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_1036300.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -6608,6 +7682,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_3035000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -6635,6 +7713,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_9006000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -6665,6 +7753,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_6035000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -6697,6 +7789,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_4031000.png",
                 "cost": 7
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -6726,6 +7828,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_3036000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -6761,6 +7867,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_9007000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -6794,6 +7904,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_1037000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -6821,6 +7935,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_6036000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -6849,6 +7973,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_5041000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -6896,6 +8024,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_5042003.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [
+                {
+                    "id": 80460,
+                    "name": "情人节2024_～前往巧克力之河的尽头～",
+                    "bonus": 20
+                }
+            ],
+            "JP": []
         }
     },
     {
@@ -6931,6 +8069,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_10009000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -7018,6 +8160,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_6037003.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -7046,6 +8198,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_4032000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -7079,6 +8235,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_9008000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -7108,6 +8268,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_6039000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -7141,6 +8305,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_23003000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -7173,6 +8341,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_1039000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -7201,6 +8373,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_2034000.png",
                 "cost": 7
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -7237,6 +8419,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_7033000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -7270,6 +8462,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_2033000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -7333,6 +8535,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_5043300.png",
                 "cost": 7
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -7363,6 +8575,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_11007000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -7389,6 +8611,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_7035000.png",
                 "cost": 7
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -7419,6 +8651,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_3038000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -7447,6 +8683,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_4035000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -7480,6 +8720,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_1038000.png",
                 "cost": 3
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -7513,6 +8763,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_2035000.png",
                 "cost": 4
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -7544,6 +8804,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_3039000.png",
                 "cost": 4
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -7597,6 +8861,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_4034300.png",
                 "cost": 3
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -7623,6 +8897,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_5044000.png",
                 "cost": 4
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -7649,6 +8933,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_6038000.png",
                 "cost": 3
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -7678,6 +8966,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_7034000.png",
                 "cost": 4
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -7709,6 +9001,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_7036000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -7740,6 +9036,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_2036000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -7770,6 +9070,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_4036000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -7801,6 +9105,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_1040000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -7865,6 +9173,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_9009001.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -7904,6 +9216,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_3040000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -7963,6 +9279,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_6040003.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -8016,6 +9336,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_11009003.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -8044,6 +9368,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_2037000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -8077,6 +9405,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_1041000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -8103,6 +9441,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_2039000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -8135,6 +9477,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_2038000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -8190,6 +9542,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_4039300.png",
                 "cost": 7
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -8223,6 +9585,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_4040000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -8276,6 +9642,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_25004003.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -8302,6 +9672,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_2040000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [
+                {
+                    "id": 80460,
+                    "name": "情人节2024_～前往巧克力之河的尽头～",
+                    "bonus": 20
+                }
+            ],
+            "JP": []
         }
     },
     {
@@ -8335,6 +9715,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_4038000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -8374,6 +9764,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_1042000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -8410,6 +9810,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_3041000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -8471,6 +9881,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_3042003.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -8500,6 +9920,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_25005000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -8556,6 +9986,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_7037001.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -8587,6 +10021,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_3043000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -8615,6 +10053,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_5045000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -8669,6 +10111,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_23004003.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -8699,6 +10145,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_2042000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -8733,6 +10183,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_7038000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -8764,6 +10218,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_3044000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -8823,6 +10281,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_25007001.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -8857,6 +10319,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_1045000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -8885,6 +10351,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_4041000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -8913,6 +10383,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_9010000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -8968,6 +10442,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_1044400.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -8996,6 +10480,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_2041000.png",
                 "cost": 3
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -9056,6 +10550,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_25006003.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -9094,6 +10592,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_4037000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -9151,6 +10659,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_10010300.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -9181,6 +10699,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_1047000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -9224,6 +10752,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_1046000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -9262,6 +10794,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_3046000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -9294,6 +10830,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_1048000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -9322,6 +10868,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_1049000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -9352,6 +10908,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_11010000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -9382,6 +10948,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_6041000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -9415,6 +10991,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_9011000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [
+                {
+                    "id": 80460,
+                    "name": "情人节2024_～前往巧克力之河的尽头～",
+                    "bonus": 20
+                }
+            ],
+            "JP": []
         }
     },
     {
@@ -9443,6 +11029,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_7039000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -9472,6 +11062,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_5046000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -9504,6 +11098,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_25008000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -9535,6 +11133,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_7040000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -9593,6 +11195,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_1050001.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -9648,6 +11254,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_2043001.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -9738,6 +11348,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_3048003.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -9797,6 +11411,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_3047300.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -9830,6 +11454,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_6042000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -9862,6 +11490,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_4042000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -9919,6 +11551,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_28001300.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -9978,6 +11620,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_1051003.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -10005,6 +11657,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_2044000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -10032,6 +11688,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_5048000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -10059,6 +11719,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_9012000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -10149,6 +11813,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_11011003.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -10187,6 +11861,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_4045000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -10214,6 +11898,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_7041000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -10271,6 +11959,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_25010003.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -10300,6 +11992,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_2045000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -10330,6 +12026,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_4046000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -10357,6 +12057,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_5049000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -10385,6 +12089,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_11012000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -10414,6 +12128,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_3050000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -10441,6 +12165,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_5050000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -10472,6 +12200,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_4043000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -10505,6 +12243,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_4044000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -10536,6 +12278,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_25009000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -10564,6 +12310,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_28002000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -10597,6 +12347,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_10011000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [
+                {
+                    "id": 80460,
+                    "name": "情人节2024_～前往巧克力之河的尽头～",
+                    "bonus": 20
+                }
+            ],
+            "JP": []
         }
     },
     {
@@ -10630,6 +12390,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_1053000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -10662,6 +12426,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_10012000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -10717,6 +12491,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_10013003.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -10752,6 +12530,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_5047000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -10778,6 +12560,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_3049000.png",
                 "cost": 3
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -10809,6 +12595,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_4047000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -10840,6 +12636,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_1052000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -10871,6 +12677,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_1043000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -10899,6 +12715,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_7042000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -10926,6 +12746,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_9013000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -10958,6 +12788,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_3051000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -10984,6 +12824,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_5051000.png",
                 "cost": 7
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -11014,6 +12864,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_4048000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -11043,6 +12897,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_2046000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -11085,6 +12949,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_23005001.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -11110,6 +12978,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_10014000.png",
                 "cost": 7
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -11139,6 +13011,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_28003000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -11172,6 +13048,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_1054000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -11214,6 +13094,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_7043000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -11245,6 +13129,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_11014000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -11279,6 +13167,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_9014000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -11307,6 +13199,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_5052000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -11342,6 +13238,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_6045000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -11377,6 +13277,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_6044000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -11412,6 +13316,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_6043000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -11439,6 +13347,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_7044000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -11469,6 +13381,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_1055000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -11498,6 +13420,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_9015000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -11531,6 +13457,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_6046000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -11564,6 +13494,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_4049000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -11594,6 +13534,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_28004000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -11622,6 +13566,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_3053000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -11652,6 +13600,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_10015000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -11685,6 +13643,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_11015000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -11746,6 +13708,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_6047400.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -11775,6 +13747,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_28005000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -11800,6 +13776,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_25011000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -11828,6 +13808,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_9016000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [
+                {
+                    "id": 80460,
+                    "name": "情人节2024_～前往巧克力之河的尽头～",
+                    "bonus": 20
+                }
+            ],
+            "JP": []
         }
     },
     {
@@ -11854,6 +13844,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_2047000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -11913,6 +13913,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_10016003.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -11967,6 +13971,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_33001003.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -11994,6 +14002,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_6048000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -12028,6 +14040,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_1057000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 30
+                }
+            ]
         }
     },
     {
@@ -12059,6 +14081,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_6049000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -12091,6 +14123,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_3054000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -12120,6 +14162,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_7046000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -12185,6 +14237,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_2048003.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -12218,6 +14274,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_1056000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -12298,6 +14358,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_5053003.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -12375,6 +14439,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_7047003.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -12409,6 +14477,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_4050000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -12462,6 +14534,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_11016003.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -12492,6 +14568,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_25012000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -12555,6 +14635,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_9017003.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -12588,6 +14672,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_2049000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -12645,6 +14733,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_28006003.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -12704,6 +14796,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_25013003.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -12732,6 +14834,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_2050000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -12759,6 +14871,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_2051000.png",
                 "cost": 7
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -12793,6 +14915,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_1058000.png",
                 "cost": 7
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -12821,6 +14953,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_4052000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -12849,6 +14991,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_7048000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -12875,6 +15027,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_2052000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -12930,6 +15086,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_9018003.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -13003,6 +15163,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_8001900.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [
+                {
+                    "id": 80460,
+                    "name": "情人节2024_～前往巧克力之河的尽头～",
+                    "bonus": 5
+                }
+            ],
+            "JP": []
         }
     },
     {
@@ -13040,6 +15210,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_1001000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -13074,6 +15248,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_1002000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -13108,6 +15286,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_1003000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -13140,6 +15322,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_1005000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -13205,6 +15391,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_1008300.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -13238,6 +15434,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_1013000.png",
                 "cost": 7
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -13270,6 +15476,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_1018000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -13299,6 +15509,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_1022000.png",
                 "cost": 7
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -13328,6 +15548,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_1026000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -13381,6 +15611,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_2001300.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -13414,6 +15654,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_2002000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -13467,6 +15717,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_2003300.png",
                 "cost": 7
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -13498,6 +15758,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_2005000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -13532,6 +15796,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_2012000.png",
                 "cost": 7
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -13561,6 +15829,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_2013000.png",
                 "cost": 3
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -13594,6 +15872,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_3001000.png",
                 "cost": 7
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -13622,6 +15910,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_3005000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -13652,6 +15944,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_3006000.png",
                 "cost": 4
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -13683,6 +15985,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_3007000.png",
                 "cost": 7
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -13711,6 +16023,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_3009000.png",
                 "cost": 4
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -13739,6 +16061,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_3010000.png",
                 "cost": 7
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -13773,6 +16105,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_4001000.png",
                 "cost": 7
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -13802,6 +16138,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_4006000.png",
                 "cost": 4
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -13851,6 +16197,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_4008300.png",
                 "cost": 4
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -13879,6 +16235,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_4011000.png",
                 "cost": 7
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -13910,6 +16270,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_4014000.png",
                 "cost": 7
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -13943,6 +16307,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_4015000.png",
                 "cost": 7
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -13970,6 +16344,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_4017000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -13999,6 +16377,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_4019000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -14029,6 +16411,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_5001000.png",
                 "cost": 7
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -14055,6 +16441,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_5002000.png",
                 "cost": 7
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -14082,6 +16478,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_5005000.png",
                 "cost": 4
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -14108,6 +16514,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_5007000.png",
                 "cost": 4
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -14136,6 +16552,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_5014000.png",
                 "cost": 7
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -14162,6 +16588,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_5015000.png",
                 "cost": 3
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -14190,6 +16626,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_5019000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -14251,6 +16697,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_5021300.png",
                 "cost": 7
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -14278,6 +16734,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_6001000.png",
                 "cost": 3
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -14305,6 +16771,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_6002000.png",
                 "cost": 4
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -14338,6 +16814,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_6010000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -14364,6 +16844,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_6011000.png",
                 "cost": 7
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -14391,6 +16875,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_6012000.png",
                 "cost": 4
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -14419,6 +16913,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_6013000.png",
                 "cost": 4
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -14445,6 +16949,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_6014000.png",
                 "cost": 3
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -14474,6 +16982,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_6017000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -14508,6 +17020,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_7001000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -14537,6 +17059,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_7002000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -14564,6 +17096,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_7003000.png",
                 "cost": 7
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -14591,6 +17133,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_7005000.png",
                 "cost": 3
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -14623,6 +17175,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_7006000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -14654,6 +17216,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_7007000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -14686,6 +17258,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_7009000.png",
                 "cost": 3
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -14714,6 +17296,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_7010000.png",
                 "cost": 4
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -14742,6 +17334,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_7011000.png",
                 "cost": 7
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -14774,6 +17376,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_7013000.png",
                 "cost": 7
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -14801,6 +17407,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_7015000.png",
                 "cost": 4
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -14832,6 +17448,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_7016000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -14859,6 +17479,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_9001000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -14891,6 +17515,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_2009000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -14920,6 +17554,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_5026000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -14954,6 +17592,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_5003000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -14984,6 +17626,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_2006000.png",
                 "cost": 7
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -15012,6 +17664,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_3016000.png",
                 "cost": 7
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -15038,6 +17700,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_4003000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -15087,6 +17753,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_4009003.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -15116,6 +17786,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_5017000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -15148,6 +17822,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_1027000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -15176,6 +17854,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_2024000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -15228,6 +17910,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_3013300.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -15257,6 +17943,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_3002000.png",
                 "cost": 7
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -15289,6 +17985,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_1014000.png",
                 "cost": 7
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -15321,6 +18027,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_4022000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -15369,6 +18079,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_5004001.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -15398,6 +18112,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_6005000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -15432,6 +18150,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_1009000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -15458,6 +18180,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_2011000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -15493,6 +18225,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_3019000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -15521,6 +18257,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_5010000.png",
                 "cost": 7
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -15549,6 +18295,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_5011000.png",
                 "cost": 7
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -15578,6 +18334,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_6007000.png",
                 "cost": 7
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -15607,6 +18373,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_7004000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -15639,6 +18409,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_2015000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -15702,6 +18482,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_3004500.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -15734,6 +18524,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_6018000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -15765,6 +18559,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_3011000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -15799,6 +18603,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_3012000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -15829,6 +18637,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_7008000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -15859,6 +18677,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_1006000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [
+                {
+                    "id": 80460,
+                    "name": "情人节2024_～前往巧克力之河的尽头～",
+                    "bonus": 20
+                }
+            ],
+            "JP": []
         }
     },
     {
@@ -15911,6 +18739,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_1028300.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -15937,6 +18769,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_6023000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -15963,6 +18799,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_9002000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -16020,6 +18866,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_4004300.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -16054,6 +18910,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_2018000.png",
                 "cost": 7
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -16101,6 +18967,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_11002300.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -16127,6 +19003,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_7014000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -16159,6 +19039,16 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_7020000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": [
+                {
+                    "id": 80520,
+                    "name": "CBC2025_他名为但丁_～酒店De_novo的礼宾员～",
+                    "bonus": 20
+                }
+            ]
         }
     },
     {
@@ -16190,6 +19080,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_4013000.png",
                 "cost": 16
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     },
     {
@@ -16217,6 +19111,10 @@
                 "img": "https://static.atlasacademy.io/JP/Faces/f_5023000.png",
                 "cost": 12
             }
+        },
+        "event_bonuses": {
+            "CN": [],
+            "JP": []
         }
     }
 ]

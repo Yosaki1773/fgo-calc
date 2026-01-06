@@ -4,6 +4,7 @@ import time
 import requests
 from datetime import datetime, timedelta
 
+# Change working directory to 'data' folder relative to this script
 os.chdir(os.path.dirname(os.path.abspath(__file__))+'/data')
 
 def fetch_git_repo():
@@ -81,6 +82,80 @@ def get_traits(trait_list):
     for trait in trait_list:
         traits.append(trait['id'])
     return traits
+
+# Event related functions
+def load_events():
+    files = ['chaldea-data/dist/wiki.events.1.json']
+    events = []
+    for file in files:
+        with open(file, 'r', encoding='utf-8') as f:
+            rawdata = json.load(f)
+            for data in rawdata:
+                event = {}
+                event['id'] = data['id']
+                event['name'] = data['name']
+                event['cn_name'] = ''
+                if 'mcLink' in data:
+                    event['cn_name'] = data['mcLink']
+                if not 'startTime' in data:
+                    continue
+                # if 'JP' not in data['startTime']:
+                #     continue
+                event['type'] = 1 # japan only
+                event['startTime_JP'] = data['startTime']['JP']
+                event['endTime_JP'] = data['endTime']['JP']
+                if 'CN' in data['startTime']:
+                    event['type'] = 0 # together japan and cn
+                    event['startTime_CN'] = data['startTime']['CN']
+                    event['endTime_CN'] = data['endTime']['CN']
+                events.append(event)
+    return events
+
+events = load_events()
+
+def geteventbyid(id):
+    for event in events:
+        if event['id'] == id:
+            return event
+    return None
+
+def is_running(id, location):
+    # now = datetime.now()
+    now = datetime.fromtimestamp(1741172401)
+    event = geteventbyid(id)
+    if not event:
+        return False
+    if location == 'CN':
+        if event['type'] != 0:
+            return False
+        return now >= datetime.fromtimestamp(event['startTime_CN']) and now <= datetime.fromtimestamp(event['endTime_CN'])
+    else:
+        return now >= datetime.fromtimestamp(event['startTime_JP']) and now <= datetime.fromtimestamp(event['endTime_JP'])
+
+def loadskills():
+    filename = 'chaldea-data/dist/baseSkills.json'
+    skills = {}
+    if os.path.exists(filename):
+        with open(filename, 'r', encoding='utf-8') as f:
+            rawdata = json.load(f)
+            for data in rawdata:
+                skills[data['id']] = data
+    return skills
+
+skills = loadskills()
+
+def loadfuncs():
+    filename = 'chaldea-data/dist/baseFunctions.json'
+    funcs = {}
+    if os.path.exists(filename):
+        with open(filename, 'r', encoding='utf-8') as f:
+            rawdata = json.load(f)
+            for data in rawdata:
+                funcs[data['funcId']] = data
+    return funcs
+funcs = loadfuncs()
+
+exclude_events = [80059, 80077, 80044, 80072]
 
 def process_servant(test):
     data = {}
@@ -188,6 +263,47 @@ def process_servant(test):
                 break
         if diffflag:
             diffs.append(k)
+    
+    # Process event bonuses
+    data['event_bonuses'] = {"CN": [], "JP": []}
+    if "extraPassive" in test:
+        for extra in test['extraPassive']:
+            extrainfo = extra['extraPassive'][0]
+            if not 'eventId' in extrainfo:
+                continue
+            event_id = extrainfo['eventId']
+            
+            # Check for CN
+            if is_running(event_id, "CN") and event_id not in exclude_events:
+                skill = skills.get(extra['id'])
+                if skill:
+                    for func in skill['functions']:
+                        funcId = func['funcId']
+                        if funcs[funcId]['funcType'] == "servantFriendshipUp":
+                            event_info = geteventbyid(event_id)
+                            event_name = event_info['cn_name'] if event_info and event_info['cn_name'] else (event_info['name'] if event_info else str(event_id))
+                            data['event_bonuses']["CN"].append({
+                                'id': event_id, 
+                                'name': event_name, 
+                                'bonus': func["svals"][0]["RateCount"] // 10
+                            })
+                            break
+
+            # Check for JP
+            if is_running(event_id, "JP") and event_id not in exclude_events:
+                skill = skills.get(extra['id'])
+                if skill:
+                    for func in skill['functions']:
+                        funcId = func['funcId']
+                        if funcs[funcId]['funcType'] == "servantFriendshipUp":
+                            event_info = geteventbyid(event_id)
+                            event_name = event_info['cn_name'] if event_info and event_info['cn_name'] else (event_info['name'] if event_info else str(event_id))
+                            data['event_bonuses']["JP"].append({
+                                'id': event_id, 
+                                'name': event_name, 
+                                'bonus': func["svals"][0]["RateCount"] // 10
+                            })
+                            break
 
     return data
 
