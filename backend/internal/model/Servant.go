@@ -15,8 +15,9 @@ type EventBonus struct {
 }
 
 type Servant struct {
-	Id           int                      `json:"id"`
-	Name         string                   `json:"name"`
-	Diff         map[string]ServantDetail `json:"diff"`
-	EventBonuses map[string][]EventBonus  `json:"event_bonuses"`
+	Id                int                      `json:"id"`
+	Name              string                   `json:"name"`
+	Diff              map[string]ServantDetail `json:"diff"`
+	EventBonuses      map[string][]EventBonus  `json:"event_bonuses"`
+	EventExtraBonuses map[string][]EventBonus  `json:"event_extra_bonuses"`
 }

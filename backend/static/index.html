@@ -357,8 +357,8 @@
                     <li>本项目已开源：<a href="https://github.com/pikaball/fgo-calc/">github</a></li>
                     <li>计算时不考虑前排加成。</li>
                     <li><strong>冠位战：</strong>Cost+12，礼装数设为6，筛选对应职阶。</li>
-                    <li><strong>特殊礼装：</strong>若带黑杯等非羁绊礼装，请在限制中减去对应Cost和礼装位。</li>
-                    <li><strong>15绊从者：</strong>减去该从者Cost，从者数量上限-1。</li>
+                    <li><strong>特殊礼装：</strong>若带黑杯等非羁绊礼装，则减去对应Cost和礼装数量。</li>
+                    <li><strong>15绊从者：</strong>减去该从者Cost，从者数量上限-1，并将其添加到排除列表。</li>
                 </ul>
             </details>
         </article>
@@ -909,6 +909,9 @@
                     }
                     const name = item.name;
                     const div = createAvatar(item.id, name, img, () => addItem(item.id), null, currentModal.type === 'ce');
+                    if (currentModal.type === 'svt') {
+                        renderEventBonuses(div, item);
+                    }
                     grid.appendChild(div);
                 });
         }
@@ -981,6 +984,9 @@
                         name = item.name;
                     }
                     const div = createAvatar(id, name, img, null, () => removeItem(type, list, id), type === 'ce');
+                    if (type === 'svt') {
+                        renderEventBonuses(div, item);
+                    }
                     container.appendChild(div);
                 }
             });
@@ -1026,6 +1032,36 @@
             } finally {
                 btn.removeAttribute('aria-busy');
                 btn.textContent = '开始计算';
+            }
+        }
+
+        function renderEventBonuses(div, svt) {
+            const enableEventBonus = document.getElementById('enable-event-bonus').checked;
+            const server = document.getElementById('server-select').value;
+            if (enableEventBonus) {
+                const bonuses = svt.event_bonuses ? svt.event_bonuses[server] : [];
+                const extraBonuses = svt.event_extra_bonuses ? svt.event_extra_bonuses[server] : [];
+                
+                if ((bonuses && bonuses.length > 0) || (extraBonuses && extraBonuses.length > 0)) {
+                    const bonusContainer = document.createElement('div');
+                    bonusContainer.className = 'event-bonus-container';
+                    
+                    bonuses.forEach(b => {
+                        const item = document.createElement('div');
+                        item.className = 'event-bonus-item';
+                        item.innerHTML = `<span class="event-bonus-val">+${b.bonus}%</span><span class="event-bonus-name" title="${b.name}">${b.name}</span>`;
+                        bonusContainer.appendChild(item);
+                    });
+                    
+                    extraBonuses.forEach(b => {
+                        const item = document.createElement('div');
+                        item.className = 'event-bonus-item';
+                        item.style.border = '1px solid var(--pico-secondary)';
+                        item.innerHTML = `<span class="event-bonus-val" style="background:var(--pico-secondary)">x${(b.bonus/100).toFixed(1)}</span><span class="event-bonus-name" title="${b.name}">${b.name}</span>`;
+                        bonusContainer.appendChild(item);
+                    });
+                    div.appendChild(bonusContainer);
+                }
             }
         }
 
@@ -1083,22 +1119,7 @@
                         }
                         const div = createAvatar(svt.id, name, detail.img, () => showSvtTraits(svt, diffKey));
 
-                        const enableEventBonus = document.getElementById('enable-event-bonus').checked;
-                        const server = document.getElementById('server-select').value;
-                        if (enableEventBonus && svt.event_bonuses && svt.event_bonuses[server]) {
-                            const bonuses = svt.event_bonuses[server];
-                            if (bonuses && bonuses.length > 0) {
-                                const bonusContainer = document.createElement('div');
-                                bonusContainer.className = 'event-bonus-container';
-                                bonuses.forEach(b => {
-                                    const item = document.createElement('div');
-                                    item.className = 'event-bonus-item';
-                                    item.innerHTML = `<span class="event-bonus-val">+${b.bonus}%</span><span class="event-bonus-name" title="${b.name}">${b.name}</span>`;
-                                    bonusContainer.appendChild(item);
-                                });
-                                div.appendChild(bonusContainer);
-                            }
-                        }
+                        renderEventBonuses(div, svt);
                         
                         const actions = document.createElement('div');
                         actions.className = 'result-actions';

@@ -94,7 +94,7 @@ def load_events():
                 event = {}
                 event['id'] = data['id']
                 event['name'] = data['name']
-                event['cn_name'] = ''
+                event['cn_name'] = data['name']
                 if 'mcLink' in data:
                     event['cn_name'] = data['mcLink']
                 if not 'startTime' in data:
@@ -266,6 +266,7 @@ def process_servant(test):
     
     # Process event bonuses
     data['event_bonuses'] = {"CN": [], "JP": []}
+    data['event_extra_bonuses'] = {"CN": [], "JP": []}
     if "extraPassive" in test:
         for extra in test['extraPassive']:
             extrainfo = extra['extraPassive'][0]
@@ -307,6 +308,33 @@ def process_servant(test):
 
     return data
 
+def load_event_detail():
+    files = find_files("events")
+    event_details = {}
+    for file in files:
+        with open(file, 'r', encoding='utf-8') as f:
+            rawdata = json.load(f)
+            for data in rawdata:
+                event_details[data['id']] = data
+    return event_details
+
+def apply_extra_event_bonuses(processed_servants):
+    event_details = load_event_detail()
+    for event_id, detail in event_details.items():
+        for location in ['CN', 'JP']:
+            if is_running(event_id, location):
+                for campaign in detail.get("campaigns", []):
+                    if campaign['target'] == "questFriendship":
+                        bonus_value = campaign['value'] // 10
+                        target_ids = campaign.get('targetIds', [])
+                        for s in processed_servants:
+                            if s['id'] in target_ids:
+                                s['event_extra_bonuses'][location].append({
+                                    'id': event_id,
+                                    'name': detail['name'],
+                                    'bonus': bonus_value
+                                })
+
 processed = []
 
 remove_list = [2501500]
@@ -320,6 +348,8 @@ for file in find_files("servants"):
             processed.append(process_servant(servant))
         except Exception as e:
             print(f"Error processing servant {servant['name']}: {e}")
+
+apply_extra_event_bonuses(processed)
 
 open('servants.json','w').write(json.dumps(processed, ensure_ascii=False, indent=4))
 

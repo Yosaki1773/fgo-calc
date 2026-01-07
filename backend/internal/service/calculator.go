@@ -221,7 +221,7 @@ func (s *CalculatorService) GetCombination(num int, includeCe []int, excludeCe [
 	return results
 }
 
-func (s *CalculatorService) calculateBestSupport(team *model.Team, baseBond int, supportLimit int, serverType string) (int, []model.CraftEssence) {
+func (s *CalculatorService) calculateBestSupport(team *model.Team, baseBond int, supportLimit int, serverType string, enableEventBonus bool) (int, []model.CraftEssence) {
 	if supportLimit <= 0 {
 		return 0, []model.CraftEssence{}
 	}
@@ -252,26 +252,32 @@ func (s *CalculatorService) calculateBestSupport(team *model.Team, baseBond int,
 
 	// Helper to calculate bonus for a set of support CEs
 	calcBonus := func(ces []model.CraftEssence) int {
-		totalPercent := 0.0
-		totalDirect := 0
-		for _, ce := range ces {
-			if ce.Id == TEA_TIME_ID {
-				totalPercent += 15.0 * float64(len(team.Servants))
-				continue
-			}
-			for i, svt := range team.Servants {
-				diffKey := team.DiffChoice[i]
+		totalBonusContribution := 0
+		for i, svt := range team.Servants {
+			svtPercent := 0.0
+			svtDirect := 0
+			diffKey := team.DiffChoice[i]
+			for _, ce := range ces {
+				if ce.Id == TEA_TIME_ID {
+					svtPercent += 15.0
+					continue
+				}
 				if m1, ok := ceEffects[ce.Id]; ok {
 					if m2, ok2 := m1[svt.Id]; ok2 {
 						if eff, ok3 := m2[diffKey]; ok3 {
-							totalPercent += eff.Percent
-							totalDirect += eff.Direct
+							svtPercent += eff.Percent
+							svtDirect += eff.Direct
 						}
 					}
 				}
 			}
+			contribution := int(float64(baseBond)*svtPercent/100.0) + svtDirect
+			if enableEventBonus {
+				contribution = int(float64(contribution) * s.getEventMultiplier(&svt, serverType))
+			}
+			totalBonusContribution += contribution
 		}
-		return int(float64(baseBond)*totalPercent/100.0) + totalDirect
+		return totalBonusContribution
 	}
 
 	if supportLimit == 1 {
@@ -307,6 +313,16 @@ func (s *CalculatorService) getEventBonus(svt *model.Servant, serverType string)
 		}
 	}
 	return bonus
+}
+
+func (s *CalculatorService) getEventMultiplier(svt *model.Servant, serverType string) float64 {
+	multiplier := 1.0
+	if list, ok := svt.EventExtraBonuses[serverType]; ok {
+		for _, b := range list {
+			multiplier *= float64(b.Bonus) / 100.0
+		}
+	}
+	return multiplier
 }
 
 func (s *CalculatorService) Optimize(costLimit int, svtLimit int, ceLimit int, supportLimit int, allowTraits []int, includeSvt []int, includeSvtDiff []string, excludeSvt []int, includeCe []int, excludeCe []int, baseBond int, serverType string, enableEventBonus bool) ([]model.TeamResponse, time.Duration) {
@@ -381,6 +397,9 @@ func (s *CalculatorService) Optimize(costLimit int, svtLimit int, ceLimit int, s
 								totalPercent += float64(s.getEventBonus(svt, serverType))
 							}
 							bonus := int(float64(baseBond)*totalPercent/100.0) + totalDirect + baseBond
+							if enableEventBonus {
+								bonus = int(float64(bonus) * s.getEventMultiplier(svt, serverType))
+							}
 							mandatoryBonuses = append(mandatoryBonuses, model.SvtBonus{
 								Svt:     svt,
 								DiffKey: diffKey,
@@ -395,6 +414,9 @@ func (s *CalculatorService) Optimize(costLimit int, svtLimit int, ceLimit int, s
 						totalPercent += float64(s.getEventBonus(svt, serverType))
 					}
 					maxBonus := int(float64(baseBond)*totalPercent/100.0) + totalDirect + baseBond
+					if enableEventBonus {
+						maxBonus = int(float64(maxBonus) * s.getEventMultiplier(svt, serverType))
+					}
 					bestDiffKey := "default"
 					bestCost := svt.Diff["default"].Cost
 					for key, detail := range svt.Diff {
@@ -403,6 +425,9 @@ func (s *CalculatorService) Optimize(costLimit int, svtLimit int, ceLimit int, s
 							totalPercent += float64(s.getEventBonus(svt, serverType))
 						}
 						currentBonus := int(float64(baseBond)*totalPercent/100.0) + totalDirect + baseBond
+						if enableEventBonus {
+							currentBonus = int(float64(currentBonus) * s.getEventMultiplier(svt, serverType))
+						}
 						if currentBonus > maxBonus {
 							maxBonus = currentBonus
 							bestDiffKey = key
@@ -457,6 +482,9 @@ func (s *CalculatorService) Optimize(costLimit int, svtLimit int, ceLimit int, s
 					totalPercent += float64(s.getEventBonus(svt, serverType))
 				}
 				maxBonus := int(float64(baseBond)*totalPercent/100.0) + totalDirect + baseBond
+				if enableEventBonus {
+					maxBonus = int(float64(maxBonus) * s.getEventMultiplier(svt, serverType))
+				}
 				bestDiffKey := "default"
 				bestCost := svt.Diff["default"].Cost
 				for key, detail := range svt.Diff {
@@ -468,6 +496,9 @@ func (s *CalculatorService) Optimize(costLimit int, svtLimit int, ceLimit int, s
 						totalPercent += float64(s.getEventBonus(svt, serverType))
 					}
 					currentBonus := int(float64(baseBond)*totalPercent/100.0) + totalDirect + baseBond
+					if enableEventBonus {
+						currentBonus = int(float64(currentBonus) * s.getEventMultiplier(svt, serverType))
+					}
 					if currentBonus > maxBonus {
 						maxBonus = currentBonus
 						bestDiffKey = key
@@ -640,7 +671,7 @@ func (s *CalculatorService) Optimize(costLimit int, svtLimit int, ceLimit int, s
 
 	// Calculate support bonuses for final candidates
 	for i := range finalCandidates {
-		bonus, ces := s.calculateBestSupport(&finalCandidates[i], baseBond, supportLimit, serverType)
+		bonus, ces := s.calculateBestSupport(&finalCandidates[i], baseBond, supportLimit, serverType, enableEventBonus)
 		finalCandidates[i].TotalBond += bonus
 		finalCandidates[i].SupportCraftEssences = ces
 	}
@@ -701,11 +732,11 @@ func (s *CalculatorService) Optimize(costLimit int, svtLimit int, ceLimit int, s
 		// Fill Support CE details in response
 		for j, ce := range team.SupportCraftEssences {
 			totalContribution := 0
-			if ce.Id == TEA_TIME_ID {
-				totalContribution = int(float64(baseBond) * 15.0 / 100.0 * float64(len(team.Servants)))
-			} else {
-				for k, svt := range team.Servants {
-					diffKey := team.DiffChoice[k]
+			for k, svt := range team.Servants {
+				diffKey := team.DiffChoice[k]
+				if ce.Id == TEA_TIME_ID {
+					totalContribution += int(float64(baseBond) * 15.0 / 100.0)
+				} else {
 					if m1, ok := ceEffects[ce.Id]; ok {
 						if m2, ok2 := m1[svt.Id]; ok2 {
 							if eff, ok3 := m2[diffKey]; ok3 {
