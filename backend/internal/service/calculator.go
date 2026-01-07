@@ -221,7 +221,7 @@ func (s *CalculatorService) GetCombination(num int, includeCe []int, excludeCe [
 	return results
 }
 
-func (s *CalculatorService) calculateBestSupport(team *model.Team, baseBond int, supportLimit int, serverType string, enableEventBonus bool) (int, []model.CraftEssence) {
+func (s *CalculatorService) calculateBestSupport(team *model.Team, baseBond int, supportLimit int, serverType string, enableEventBonus bool, selectedEvents map[int]bool) (int, []model.CraftEssence) {
 	if supportLimit <= 0 {
 		return 0, []model.CraftEssence{}
 	}
@@ -273,7 +273,7 @@ func (s *CalculatorService) calculateBestSupport(team *model.Team, baseBond int,
 			}
 			contribution := int(float64(baseBond)*svtPercent/100.0) + svtDirect
 			if enableEventBonus {
-				contribution = int(float64(contribution) * s.getEventMultiplier(svt, serverType))
+				contribution = int(float64(contribution) * s.getEventMultiplier(svt, serverType, selectedEvents))
 			}
 			totalBonusContribution += contribution
 		}
@@ -305,29 +305,39 @@ func (s *CalculatorService) calculateBestSupport(team *model.Team, baseBond int,
 	return bestBonus, bestCEs
 }
 
-func (s *CalculatorService) getEventBonus(svt *model.Servant, serverType string) int {
+func (s *CalculatorService) getEventBonus(svt *model.Servant, serverType string, selectedEvents map[int]bool) int {
 	bonus := 0
 	if list, ok := svt.EventBonuses[serverType]; ok {
 		for _, b := range list {
-			bonus += b.Bonus
+			if selectedEvents[b.Id] {
+				bonus += b.Bonus
+			}
 		}
 	}
 	return bonus
 }
 
-func (s *CalculatorService) getEventMultiplier(svt *model.Servant, serverType string) float64 {
+func (s *CalculatorService) getEventMultiplier(svt *model.Servant, serverType string, selectedEvents map[int]bool) float64 {
 	multiplier := 1.0
 	if list, ok := svt.EventExtraBonuses[serverType]; ok {
 		for _, b := range list {
-			multiplier *= float64(b.Bonus) / 100.0
+			if selectedEvents[b.Id] {
+				multiplier *= float64(b.Bonus) / 100.0
+			}
 		}
 	}
 	return multiplier
 }
 
-func (s *CalculatorService) Optimize(costLimit int, svtLimit int, ceLimit int, supportLimit int, allowTraits []int, includeSvt []int, includeSvtDiff []string, excludeSvt []int, includeCe []int, excludeCe []int, baseBond int, serverType string, enableEventBonus bool) ([]model.TeamResponse, time.Duration) {
+func (s *CalculatorService) Optimize(costLimit int, svtLimit int, ceLimit int, supportLimit int, allowTraits []int, includeSvt []int, includeSvtDiff []string, excludeSvt []int, includeCe []int, excludeCe []int, baseBond int, serverType string, enableEventBonus bool, selectedEventIds []int) ([]model.TeamResponse, time.Duration) {
 	startTime := time.Now()
 	log.Println("Optimize called with costLimit:", costLimit, "svtLimit:", svtLimit, "ceLimit:", ceLimit)
+
+	selectedEvents := make(map[int]bool)
+	for _, id := range selectedEventIds {
+		selectedEvents[id] = true
+	}
+
 	if len(includeSvt) > svtLimit {
 		return []model.TeamResponse{}, 0
 	}
@@ -406,11 +416,11 @@ func (s *CalculatorService) Optimize(costLimit int, svtLimit int, ceLimit int, s
 						if detail, ok := svt.Diff[diffKey]; ok {
 							totalPercent, totalDirect := s.computeEffectsForCombo(ceCombo, svt.Id, diffKey)
 							if enableEventBonus {
-								totalPercent += float64(s.getEventBonus(svt, serverType))
+								totalPercent += float64(s.getEventBonus(svt, serverType, selectedEvents))
 							}
 							bonus := int(float64(baseBond)*totalPercent/100.0) + totalDirect + baseBond
 							if enableEventBonus {
-								bonus = int(float64(bonus) * s.getEventMultiplier(svt, serverType))
+								bonus = int(float64(bonus) * s.getEventMultiplier(svt, serverType, selectedEvents))
 							}
 							mandatoryBonuses = append(mandatoryBonuses, model.SvtBonus{
 								Svt:     svt,
@@ -423,22 +433,22 @@ func (s *CalculatorService) Optimize(costLimit int, svtLimit int, ceLimit int, s
 					}
 					totalPercent, totalDirect := s.computeEffectsForCombo(ceCombo, svt.Id, "default")
 					if enableEventBonus {
-						totalPercent += float64(s.getEventBonus(svt, serverType))
+						totalPercent += float64(s.getEventBonus(svt, serverType, selectedEvents))
 					}
 					maxBonus := int(float64(baseBond)*totalPercent/100.0) + totalDirect + baseBond
 					if enableEventBonus {
-						maxBonus = int(float64(maxBonus) * s.getEventMultiplier(svt, serverType))
+						maxBonus = int(float64(maxBonus) * s.getEventMultiplier(svt, serverType, selectedEvents))
 					}
 					bestDiffKey := "default"
 					bestCost := svt.Diff["default"].Cost
 					for key, detail := range svt.Diff {
 						totalPercent, totalDirect := s.computeEffectsForCombo(ceCombo, svt.Id, key)
 						if enableEventBonus {
-							totalPercent += float64(s.getEventBonus(svt, serverType))
+							totalPercent += float64(s.getEventBonus(svt, serverType, selectedEvents))
 						}
 						currentBonus := int(float64(baseBond)*totalPercent/100.0) + totalDirect + baseBond
 						if enableEventBonus {
-							currentBonus = int(float64(currentBonus) * s.getEventMultiplier(svt, serverType))
+							currentBonus = int(float64(currentBonus) * s.getEventMultiplier(svt, serverType, selectedEvents))
 						}
 						if currentBonus > maxBonus {
 							maxBonus = currentBonus
@@ -491,11 +501,11 @@ func (s *CalculatorService) Optimize(costLimit int, svtLimit int, ceLimit int, s
 				svt := &currentSvtPool[i]
 				totalPercent, totalDirect := s.computeEffectsForCombo(ceCombo, svt.Id, "default")
 				if enableEventBonus {
-					totalPercent += float64(s.getEventBonus(svt, serverType))
+					totalPercent += float64(s.getEventBonus(svt, serverType, selectedEvents))
 				}
 				maxBonus := int(float64(baseBond)*totalPercent/100.0) + totalDirect + baseBond
 				if enableEventBonus {
-					maxBonus = int(float64(maxBonus) * s.getEventMultiplier(svt, serverType))
+					maxBonus = int(float64(maxBonus) * s.getEventMultiplier(svt, serverType, selectedEvents))
 				}
 				bestDiffKey := "default"
 				bestCost := svt.Diff["default"].Cost
@@ -505,11 +515,11 @@ func (s *CalculatorService) Optimize(costLimit int, svtLimit int, ceLimit int, s
 					}
 					totalPercent, totalDirect := s.computeEffectsForCombo(ceCombo, svt.Id, key)
 					if enableEventBonus {
-						totalPercent += float64(s.getEventBonus(svt, serverType))
+						totalPercent += float64(s.getEventBonus(svt, serverType, selectedEvents))
 					}
 					currentBonus := int(float64(baseBond)*totalPercent/100.0) + totalDirect + baseBond
 					if enableEventBonus {
-						currentBonus = int(float64(currentBonus) * s.getEventMultiplier(svt, serverType))
+						currentBonus = int(float64(currentBonus) * s.getEventMultiplier(svt, serverType, selectedEvents))
 					}
 					if currentBonus > maxBonus {
 						maxBonus = currentBonus
@@ -684,7 +694,7 @@ func (s *CalculatorService) Optimize(costLimit int, svtLimit int, ceLimit int, s
 
 	// Calculate support bonuses for final candidates
 	for i := range finalCandidates {
-		bonus, ces := s.calculateBestSupport(&finalCandidates[i], baseBond, supportLimit, serverType, enableEventBonus)
+		bonus, ces := s.calculateBestSupport(&finalCandidates[i], baseBond, supportLimit, serverType, enableEventBonus, selectedEvents)
 		finalCandidates[i].TotalBond += bonus
 		finalCandidates[i].SupportCraftEssences = ces
 	}

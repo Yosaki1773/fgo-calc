@@ -85,6 +85,7 @@ func (h *Handler) Calculate(c *gin.Context) {
 		server = "CN"
 	}
 	enableEventBonus := c.PostForm("enable_event_bonus") == "true"
+	selectedEvents := mapStr2Int(c.PostFormArray("selected_events"))
 
 	results, duration := h.service.Optimize(
 		costLimit,
@@ -100,6 +101,7 @@ func (h *Handler) Calculate(c *gin.Context) {
 		baseBond,
 		server,
 		enableEventBonus,
+		selectedEvents,
 	)
 
 	c.JSON(http.StatusOK, gin.H{

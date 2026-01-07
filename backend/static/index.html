@@ -395,10 +395,17 @@
                 </label>
             </div>
             
-            <label style="margin-bottom: 1.5rem;">
-                <input type="checkbox" id="enable-event-bonus">
+            <label style="margin-bottom: 0.5rem;">
+                <input type="checkbox" id="enable-event-bonus" onchange="toggleEventSelection()">   
                 计算活动羁绊加成
             </label>
+
+            <details id="event-selection-details" style="display: none; margin-bottom: 1.5rem;">
+                <summary style="font-size: 0.8rem;">选择计算的活动</summary>
+                <div id="event-checkboxes-container" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 0.5rem; padding: 0.5rem; background: rgba(0,0,0,0.02); border-radius: var(--pico-border-radius); border: 1px solid var(--pico-muted-border-color);">
+                    <!-- 动态生成复选框 -->
+                </div>
+            </details>
 
             <div class="section-header">
                 <h6><i data-lucide="filter" style="width: 16px; vertical-align: middle;"></i> 职阶筛选</h6>
@@ -545,7 +552,8 @@
             excludeSvt: new Set(),
             includeCe: new Set(),
             excludeCe: new Set(),
-            allowTraits: new Set()
+            allowTraits: new Set(),
+            selectedEvents: new Set()
         };
         let currentModal = { type: '', list: '' };
 
@@ -595,6 +603,7 @@
                     includeCe: Array.from(SELECTIONS.includeCe),
                     excludeCe: Array.from(SELECTIONS.excludeCe),
                     allowTraits: Array.from(SELECTIONS.allowTraits),
+                    selectedEvents: Array.from(SELECTIONS.selectedEvents),
                 }
             };
             localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
@@ -620,12 +629,14 @@
                     if (state.selections.includeCe) SELECTIONS.includeCe = new Set(state.selections.includeCe);
                     if (state.selections.excludeCe) SELECTIONS.excludeCe = new Set(state.selections.excludeCe);
                     if (state.selections.allowTraits) SELECTIONS.allowTraits = new Set(state.selections.allowTraits);
+                    if (state.selections.selectedEvents) SELECTIONS.selectedEvents = new Set(state.selections.selectedEvents);
                     
                     renderMainClassFilters();
                     renderSelectionList('svt', 'include');
                     renderSelectionList('svt', 'exclude');
                     renderSelectionList('ce', 'include');
                     renderSelectionList('ce', 'exclude');
+                    renderEventSelection();
                 }
             } catch (e) {
                 console.error('Failed to load state:', e);
@@ -640,7 +651,18 @@
             ['cost-limit', 'svt-limit', 'ce-limit', 'support-limit', 'base-bond', 'server-select', 'enable-event-bonus'].forEach(id => {
                 const el = document.getElementById(id);
                 if (el) {
-                    el.addEventListener('change', saveState);
+                    el.addEventListener('change', () => {
+                        if (id === 'server-select') {
+                            SELECTIONS.selectedEvents.clear();
+                            renderEventSelection(true);
+                        } else if (id === 'enable-event-bonus') {
+                            renderEventSelection(el.checked);
+                        }
+                        // Update bonus display
+                        try { renderSelectionList('svt', 'include'); } catch(e){}
+                        try { renderSelectionList('svt', 'exclude'); } catch(e){}
+                        saveState();
+                    });
                     if (el.type === 'number' || el.type === 'text') {
                         el.addEventListener('input', saveState);
                     }
@@ -657,6 +679,7 @@
                loadState();
                
                renderMainClassFilters();
+               renderEventSelection();
             } catch (error) {
                 console.error('Failed to load data:', error);
                 alert('数据加载失败，请检查后端服务是否正常。');
@@ -664,6 +687,119 @@
         };
 
         // --- 职阶筛选逻辑 ---
+        function toggleEventSelection() {
+            const enabled = document.getElementById('enable-event-bonus').checked;
+            const details = document.getElementById('event-selection-details');
+            details.style.display = enabled ? 'block' : 'none';
+            if (enabled) {
+                renderEventSelection(true);
+            }
+        }
+
+        function renderEventSelection(autoSelect = false) {
+            const enabled = document.getElementById('enable-event-bonus').checked;
+            const server = document.getElementById('server-select').value;
+            const details = document.getElementById('event-selection-details');
+            const container = document.getElementById('event-checkboxes-container');
+
+            details.style.display = enabled ? 'block' : 'none';
+            if (!enabled) return;
+
+            // Extract unique events for current server
+            const eventsMap = new Map();
+            ALL_DATA.servants.forEach(svt => {
+                const bonuses = svt.event_bonuses ? svt.event_bonuses[server] : [];
+                const extraBonuses = svt.event_extra_bonuses ? svt.event_extra_bonuses[server] : [];
+                [...bonuses, ...extraBonuses].forEach(b => {
+                    eventsMap.set(b.id, b.name);
+                });
+            });
+
+            container.innerHTML = '';
+            if (eventsMap.size === 0) {
+                container.innerHTML = '<p style="font-size: 0.8rem; color: var(--pico-muted-color); margin: 0;">当前服务器无进行中的活动数据。</p>';
+                return;
+            }
+
+            // Check if we need to auto-select all
+            const hasHistory = localStorage.getItem(STORAGE_KEY) !== null;
+            if ((autoSelect || !hasHistory) && SELECTIONS.selectedEvents.size === 0) {
+                eventsMap.forEach((_, id) => SELECTIONS.selectedEvents.add(id));
+            }
+
+            // Controls
+            const controls = document.createElement('div');
+            controls.style.gridColumn = '1 / -1';
+            controls.style.marginBottom = '0.5rem';
+            controls.style.display = 'flex';
+            controls.style.gap = '8px';
+            
+            const btnAll = document.createElement('button');
+            btnAll.className = 'outline secondary';
+            btnAll.style.padding = '2px 8px';
+            btnAll.style.fontSize = '0.75rem';
+            btnAll.textContent = '全选';
+            btnAll.onclick = (e) => {
+                e.preventDefault();
+                eventsMap.forEach((_, id) => SELECTIONS.selectedEvents.add(id));
+                renderEventSelection();
+                try { renderSelectionList('svt', 'include'); } catch(e){}
+                try { renderSelectionList('svt', 'exclude'); } catch(e){}
+                saveState();
+            };
+
+            const btnNone = document.createElement('button');
+            btnNone.className = 'outline secondary';
+            btnNone.style.padding = '2px 8px';
+            btnNone.style.fontSize = '0.75rem';
+            btnNone.textContent = '全不选';
+            btnNone.onclick = (e) => {
+                e.preventDefault();
+                SELECTIONS.selectedEvents.clear();
+                renderEventSelection();
+                try { renderSelectionList('svt', 'include'); } catch(e){}
+                try { renderSelectionList('svt', 'exclude'); } catch(e){}
+                saveState();
+            };
+
+            controls.appendChild(btnAll);
+            controls.appendChild(btnNone);
+            container.appendChild(controls);
+
+            const sortedEvents = Array.from(eventsMap.entries()).sort((a, b) => b[0] - a[0]);
+
+            sortedEvents.forEach(([id, name]) => {
+                const label = document.createElement('label');
+                label.style.display = 'flex';
+                label.style.alignItems = 'center';
+                label.style.gap = '8px';
+                label.style.marginBottom = '0';
+                label.style.fontSize = '0.75rem';
+
+                const input = document.createElement('input');
+                input.type = 'checkbox';
+                input.checked = SELECTIONS.selectedEvents.has(id);
+                
+                input.onchange = (e) => {
+                    if (e.target.checked) SELECTIONS.selectedEvents.add(id);
+                    else SELECTIONS.selectedEvents.delete(id);
+                    saveState();
+                    // Update bonus display if needed
+                    try { renderSelectionList('svt', 'include'); } catch(e){}
+                    try { renderSelectionList('svt', 'exclude'); } catch(e){}
+                };
+
+                label.appendChild(input);
+                const nameSpan = document.createElement('span');
+                nameSpan.textContent = name;
+                nameSpan.style.whiteSpace = 'nowrap';
+                nameSpan.style.overflow = 'hidden';
+                nameSpan.style.textOverflow = 'ellipsis';
+                label.appendChild(nameSpan);
+                container.appendChild(label);
+            });
+        }
+
         function renderMainClassFilters() {
             const container = document.getElementById('main-class-filters');
             if (!container) return;
@@ -1007,6 +1143,7 @@
             params.append('basebond', document.getElementById('base-bond').value);
             params.append('server', document.getElementById('server-select').value);
             params.append('enable_event_bonus', document.getElementById('enable-event-bonus').checked);
+            SELECTIONS.selectedEvents.forEach(id => params.append('selected_events', id));
 
             SELECTIONS.allowTraits.forEach(id => params.append('allowtraits', id));
             SELECTIONS.includeSvt.forEach((diff, id) => {
@@ -1039,9 +1176,13 @@
             const enableEventBonus = document.getElementById('enable-event-bonus').checked;
             const server = document.getElementById('server-select').value;
             if (enableEventBonus) {
-                const bonuses = svt.event_bonuses ? svt.event_bonuses[server] : [];
-                const extraBonuses = svt.event_extra_bonuses ? svt.event_extra_bonuses[server] : [];
+                let bonuses = svt.event_bonuses ? svt.event_bonuses[server] : [];
+                let extraBonuses = svt.event_extra_bonuses ? svt.event_extra_bonuses[server] : [];
                 
+                // Filter based on selected events
+                bonuses = bonuses.filter(b => SELECTIONS.selectedEvents.has(b.id));
+                extraBonuses = extraBonuses.filter(b => SELECTIONS.selectedEvents.has(b.id));
+
                 if ((bonuses && bonuses.length > 0) || (extraBonuses && extraBonuses.length > 0)) {
                     const bonusContainer = document.createElement('div');
                     bonusContainer.className = 'event-bonus-container';
