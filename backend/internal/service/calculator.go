@@ -129,7 +129,7 @@ func (s *CalculatorService) FixDominateMap(cePool []model.CraftEssence, included
 	return fixedMap
 }
 
-func (s *CalculatorService) GetCombination(num int, includeCe []int, excludeCe []int) [][]model.CraftEssence {
+func (s *CalculatorService) GetCombination(num int, includeCe []int, excludeCe []int, serverType string) [][]model.CraftEssence {
 	if num <= 0 {
 		return [][]model.CraftEssence{}
 	}
@@ -146,6 +146,9 @@ func (s *CalculatorService) GetCombination(num int, includeCe []int, excludeCe [
 	included := []model.CraftEssence{}
 	pool := []model.CraftEssence{}
 	for _, ce := range craftEssences {
+		if ce.Server == "JP" && serverType != "JP" {
+			continue
+		}
 		if excludeSet[ce.Id] {
 			continue
 		}
@@ -218,7 +221,7 @@ func (s *CalculatorService) GetCombination(num int, includeCe []int, excludeCe [
 	return results
 }
 
-func (s *CalculatorService) calculateBestSupport(team *model.Team, baseBond int, supportLimit int) (int, []model.CraftEssence) {
+func (s *CalculatorService) calculateBestSupport(team *model.Team, baseBond int, supportLimit int, serverType string) (int, []model.CraftEssence) {
 	if supportLimit <= 0 {
 		return 0, []model.CraftEssence{}
 	}
@@ -226,6 +229,9 @@ func (s *CalculatorService) calculateBestSupport(team *model.Team, baseBond int,
 	supportPool := []model.CraftEssence{}
 	craftEssences := s.repo.GetCraftEssences()
 	for _, ce := range craftEssences {
+		if ce.Server == "JP" && serverType != "JP" {
+			continue
+		}
 		if ce.Id == TEA_TIME_ID || ce.Id == 9401970 { // Tea Time or Lunchtime
 			supportPool = append(supportPool, ce)
 			continue
@@ -325,7 +331,7 @@ func (s *CalculatorService) Optimize(costLimit int, svtLimit int, ceLimit int, s
 
 	cePool := [][]model.CraftEssence{}
 	for i := mince; i <= ceLimit; i++ {
-		combs := s.GetCombination(i, includeCe, excludeCe)
+		combs := s.GetCombination(i, includeCe, excludeCe, serverType)
 		cePool = append(cePool, combs...)
 	}
 
@@ -634,7 +640,7 @@ func (s *CalculatorService) Optimize(costLimit int, svtLimit int, ceLimit int, s
 
 	// Calculate support bonuses for final candidates
 	for i := range finalCandidates {
-		bonus, ces := s.calculateBestSupport(&finalCandidates[i], baseBond, supportLimit)
+		bonus, ces := s.calculateBestSupport(&finalCandidates[i], baseBond, supportLimit, serverType)
 		finalCandidates[i].TotalBond += bonus
 		finalCandidates[i].SupportCraftEssences = ces
 	}

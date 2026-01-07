@@ -120,8 +120,8 @@ def geteventbyid(id):
     return None
 
 def is_running(id, location):
-    # now = datetime.now()
-    now = datetime.fromtimestamp(1741172401)
+    now = datetime.now()
+    # now = datetime.fromtimestamp(1741172401)
     event = geteventbyid(id)
     if not event:
         return False

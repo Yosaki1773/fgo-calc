@@ -21,21 +21,21 @@ def find_ce(id):
             return ce
     return None
 
-def get_ce(id, filters):
+def get_ce(id, filters, server=None):
     raw = find_ce(id)
     # print(raw['name'])
-    return {
+    data = {
         "id": raw['id'],
         "name": translate(raw['name'], "ce"),
         "img": dict(raw['extraAssets']['equipFace']['equip']).popitem()[1],
         "cost": raw['cost'],
         "filters": filters
     }
+    if server:
+        data['server'] = server
+    return data
 
 ce_data = []
-ce_data.append(get_ce(9408800, [([304], 20),([203], 20)]))
-ce_data.append(get_ce(9408590, [([300, 2], 20)]))
-ce_data.append(get_ce(9408390, [([2780], 20)]))
 ce_data.append(get_ce(9408220, [([103], 20)]))
 ce_data.append(get_ce(9408060, [([104], 20)]))
 ce_data.append(get_ce(9407850, [([300, 303], 20)]))
@@ -52,9 +52,14 @@ ce_data.append(get_ce(9403990, [([], 5)]))
 ce_data.append(get_ce(9403520, [([], 5)]))
 ce_data.append(get_ce(9401970, [([], 10)]))
 ce_data.append(get_ce(9400980, [([], -50)]))
-ce_data.append(get_ce(9408990, [([301, 2858], 20)]))
-ce_data.append(get_ce(9311320, [([], 2)]))
-ce_data.append(get_ce(9311450, [([], 2)]))
+
+# 日服特供
+ce_data.append(get_ce(9408990, [([301, 2858], 20)], server="JP"))
+ce_data.append(get_ce(9408800, [([304], 20),([203], 20)], server="JP"))
+ce_data.append(get_ce(9408590, [([300, 2], 20)], server="JP"))
+ce_data.append(get_ce(9408390, [([2780], 20)], server="JP"))
+ce_data.append(get_ce(9311320, [([], 2)], server="JP"))
+ce_data.append(get_ce(9311450, [([], 2)], server="JP"))
 
 open('ces.json','w').write(json.dumps(ce_data, ensure_ascii=False, indent=4))
 

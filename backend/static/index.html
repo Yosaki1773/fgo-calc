@@ -161,9 +161,53 @@
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(calc(var(--avatar-size) + 20px), 1fr));
             gap: 1rem;
-            max-height: 60vh;
+            max-height: 50vh;
             overflow-y: auto;
             padding: 0.5rem;
+        }
+        .filter-container {
+            margin-bottom: 1rem;
+            padding: 0.5rem;
+            background: rgba(0,0,0,0.02);
+            border-radius: var(--pico-border-radius);
+            border: 1px solid var(--pico-muted-border-color);
+        }
+        .filter-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+        .filter-group:last-child {
+            margin-bottom: 0;
+        }
+        .filter-label {
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-right: 0.5rem;
+            min-width: 60px;
+        }
+        .class-icon-btn {
+            width: 32px;
+            height: 32px;
+            cursor: pointer;
+            transition: transform 0.1s;
+            object-fit: contain;
+        }
+        .class-icon-btn:hover {
+            transform: scale(1.1);
+        }
+        .star-filter-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.8rem;
+            margin-bottom: 0 !important;
+            cursor: pointer;
+        }
+        .star-filter-label input {
+            margin-bottom: 0;
         }
         .placeholder {
             width: var(--avatar-size);
@@ -304,15 +348,15 @@
 </head>
 <body>
     <main class="container">
-        <h1><i data-lucide="calculator"></i> FGO 最优羁绊求解器</h1>
+        <h1><i data-lucide="calculator"></i> FGO 最优羁绊组队求解器 v2.0</h1>
 
         <article class="card-section">
             <details>
                 <summary><i data-lucide="info" style="width: 18px; vertical-align: middle; margin-right: 4px;"></i> 使用提示 (Hint)</summary>
                 <ul>
                     <li>本项目已开源：<a href="https://github.com/pikaball/fgo-calc/">github</a></li>
-                    <li>计算时不考虑前排从者自身的礼装羁绊加成（仅考虑全局加成）。</li>
-                    <li><strong>冠位战：</strong>Cost+12，礼装数设为6，特性筛选对应职阶。</li>
+                    <li>计算时不考虑前排加成。</li>
+                    <li><strong>冠位战：</strong>Cost+12，礼装数设为6，筛选对应职阶。</li>
                     <li><strong>特殊礼装：</strong>若带黑杯等非羁绊礼装，请在限制中减去对应Cost和礼装位。</li>
                     <li><strong>15绊从者：</strong>减去该从者Cost，从者数量上限-1。</li>
                 </ul>
@@ -320,7 +364,7 @@
         </article>
 
         <article class="card-section">
-            <header><i data-lucide="settings-2" style="width: 20px; vertical-align: middle; margin-right: 8px;"></i> 限制与配置</header>
+            <header><i data-lucide="settings-2" style="width: 20px; vertical-align: middle; margin-right: 8px;"></i> 限制条件</header>
             <div class="grid-config">
                 <label>
                     Cost 上限
@@ -328,11 +372,11 @@
                 </label>
                 <label>
                     从者数量
-                    <input type="number" id="svt-limit" value="5" max="5" min="1">
+                    <input type="number" id="svt-limit" value="5" max="6" min="1">
                 </label>
                 <label>
                     礼装数量
-                    <input type="number" id="ce-limit" value="5" max="5" min="1">
+                    <input type="number" id="ce-limit" value="5" max="6" min="1">
                 </label>
                 <label>
                     助战礼装数量
@@ -357,13 +401,11 @@
             </label>
 
             <div class="section-header">
-                <h6><i data-lucide="filter" style="width: 16px; vertical-align: middle;"></i> 特性筛选 (OR)</h6>
-                <div style="display: flex; gap: 8px;">
-                    <button class="outline btn-add" onclick="openTraitModal()"><i data-lucide="plus"></i> 选择特性</button>
-                    <button class="outline secondary btn-add" onclick="clearTraits()"><i data-lucide="trash-2"></i> 清空</button>
-                </div>
+                <h6><i data-lucide="filter" style="width: 16px; vertical-align: middle;"></i> 职阶筛选</h6>
             </div>
-            <div id="selected-traits" class="grid" style="grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); margin-bottom: 1.5rem;"></div>
+            <div id="main-class-filters" class="filter-group" style="margin-bottom: 1.5rem; justify-content: center; gap: 8px;">
+                <!-- 职阶图标将在这里动态生成 -->
+            </div>
 
             <div class="grid">
                 <div>
@@ -434,24 +476,11 @@
             <p style="margin: 0.5rem 0;">
                 <a href="https://github.com/pikaball" target="_blank" class="secondary"><i data-lucide="github" style="width: 16px; vertical-align: middle;"></i> GitHub</a> | 
                 <a href="https://pikaball.cc" target="_blank" class="secondary"><i data-lucide="globe" style="width: 16px; vertical-align: middle;"></i> Blog</a> | 
-                <a href="https://space.bilibili.com/3546788520790068" target="_blank" class="secondary"><i data-lucide="video" style="width: 16px; vertical-align: middle;"></i> Bilibili</a>
+                <a href="https://space.bilibili.com/3546788520790068" target="_blank" class="secondary"><i data-lucide="video" style="width: 16px; vertical-align: middle;"></i> Bilibili</a> |
+                <a href="javascript:void(0)" onclick="openDonateModal()" class="secondary"><i data-lucide="heart" style="width: 16px; vertical-align: middle;"></i> 捐赠（爱发电）</a>
             </p>
         </footer>
     </main>
-
-    <dialog id="trait-modal">
-        <article>
-            <header>
-                <a href="#close" aria-label="Close" class="close" onclick="closeTraitModal()"></a>
-                <span>选择特性</span>
-            </header>
-            <input type="search" id="trait-modal-search" placeholder="搜索特性名称...">
-            <div id="trait-modal-grid" class="grid" style="max-height: 60vh; overflow-y: auto; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));"></div>
-            <footer>
-                <button class="secondary" onclick="closeTraitModal()">关闭</button>
-            </footer>
-        </article>
-    </dialog>
 
     <dialog id="svt-trait-display-modal">
         <article>
@@ -467,16 +496,45 @@
     </dialog>
 
     <dialog id="add-modal">
-        <article>
+        <article style="max-width: 800px; width: 90%;">
             <header>
                 <a href="#close" aria-label="Close" class="close" onclick="closeModal()"></a>
                 <span id="modal-title"></span>
             </header>
             <input type="search" id="modal-search" placeholder="搜索名称...">
+            
+            <div id="modal-filter-container" class="filter-container" style="display: none;">
+                <div class="filter-group">
+                    <span class="filter-label">星级：</span>
+                    <div id="star-filters" style="display: flex; gap: 12px; flex-wrap: wrap;">
+                        <!-- 星级过滤器将在这里动态生成 -->
+                    </div>
+                </div>
+                <div class="filter-group">
+                    <span class="filter-label">职阶：</span>
+                    <div id="class-filters" style="display: flex; gap: 8px; flex-wrap: wrap;">
+                        <!-- 职阶过滤器将在这里动态生成 -->
+                    </div>
+                </div>
+            </div>
+
             <div id="modal-grid" class="modal-grid"></div>
             <footer>
                 <button class="secondary" onclick="closeModal()">关闭</button>
             </footer>
+        </article>
+    </dialog>
+
+    <dialog id="donate-modal">
+        <article style="max-width: 400px;">
+            <header>
+                <a href="#close" aria-label="Close" class="close" onclick="closeDonateModal()"></a>
+                <span>请作者喝杯蜜雪冰城</span>
+            </header>
+            <div style="text-align: center;">
+                <img src="/static/donate.jpg" alt="捐赠二维码" style="max-width: 100%; border-radius: 8px;">
+                <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--pico-muted-color);">感谢支持喵</p>
+            </div>
         </article>
     </dialog>
 
@@ -490,6 +548,33 @@
             allowTraits: new Set()
         };
         let currentModal = { type: '', list: '' };
+
+        const STAR_TRAITS = {
+            0: 400, 1: 401, 2: 402, 3: 403, 4: 404, 5: 405
+        };
+
+        const CLASS_TRAITS = [
+            { name: 'Saber', trait: 100 },
+            { name: 'Archer', trait: 102 },
+            { name: 'Lancer', trait: 101 },
+            { name: 'Rider', trait: 103 },
+            { name: 'Caster', trait: 104 },
+            { name: 'Assassin', trait: 105 },
+            { name: 'Berserker', trait: 106 },
+            { name: 'Ruler', trait: 108 },
+            { name: 'Avenger', trait: 110 },
+            { name: 'MoonCancer', trait: 115 },
+            { name: 'Shielder', trait: 107 },
+            { name: 'Alterego', trait: 109 },
+            { name: 'Foreigner', trait: 117 },
+            { name: 'Pretender', trait: 120 },
+            { name: 'Beast', trait: [132, 129, 124] }
+        ];
+
+        let FILTER_STATE = {
+            stars: new Set(),
+            classes: new Set()
+        };
 
         const STORAGE_KEY = 'fgo-calc-state';
 
@@ -536,7 +621,7 @@
                     if (state.selections.excludeCe) SELECTIONS.excludeCe = new Set(state.selections.excludeCe);
                     if (state.selections.allowTraits) SELECTIONS.allowTraits = new Set(state.selections.allowTraits);
                     
-                    renderSelectedTraits();
+                    renderMainClassFilters();
                     renderSelectionList('svt', 'include');
                     renderSelectionList('svt', 'exclude');
                     renderSelectionList('ce', 'include');
@@ -571,89 +656,66 @@
                // 加载持久化状态
                loadState();
                
-               renderSelectedTraits();
-               document.getElementById('trait-modal-search').addEventListener('input', (e) => {
-                   populateTraitModalGrid(e.target.value);
-               });
+               renderMainClassFilters();
             } catch (error) {
                 console.error('Failed to load data:', error);
                 alert('数据加载失败，请检查后端服务是否正常。');
             }
         };
 
-        // 已选特性渲染（可直接取消）
-        function renderSelectedTraits() {
-            const sel = document.getElementById('selected-traits');
-            sel.innerHTML = '';
-            const items = [...SELECTIONS.allowTraits].map(id => [id, ALL_DATA.traits[id]]).filter(([,name]) => name && name.trim().length > 0);
-            items.sort(([,a],[,b]) => a.localeCompare(b, 'zh-Hans-CN'));
-            for (const [id, name] of items) {
-                const tag = document.createElement('span');
-                tag.className = 'trait-tag';
-                tag.innerHTML = `${name} <i data-lucide="x-circle" style="width: 14px; height: 14px;"></i>`;
-                tag.onclick = () => {
-                    SELECTIONS.allowTraits.delete(Number(id));
-                    renderSelectedTraits();
-                    saveState();
-                    const traitCheckbox = document.querySelector(`#trait-modal-grid input[data-id='${id}']`);
-                    if (traitCheckbox) traitCheckbox.checked = false;
-                };
-                sel.appendChild(tag);
-            }
-            refreshIcons();
-        }
-
-        // 可搜索的特性筛选（不再一次性全部渲染）
-        function renderTraitFilters(filter = '') {
-            const container = document.getElementById('trait-filter-container');
+        // --- 职阶筛选逻辑 ---
+        function renderMainClassFilters() {
+            const container = document.getElementById('main-class-filters');
+            if (!container) return;
             container.innerHTML = '';
-            const q = (filter || '').trim().toLowerCase();
-            if (q.length === 0) {
-                const hint = document.createElement('small');
-                hint.style.opacity = '0.8';
-                hint.textContent = '在上方搜索框中输入以查找特性。';
-                container.appendChild(hint);
-                return;
-            }
-            const selected = new Set([...SELECTIONS.allowTraits].map(Number));
-            const candidates = Object.entries(ALL_DATA.traits)
-                .filter(([, name]) => name && name.trim().length > 0) // 过滤空名称
-                .filter(([, name]) => name.toLowerCase().includes(q))
-                .filter(([id]) => !selected.has(Number(id))); // 已选的不再重复出现在结果里
-            candidates.sort(([,a],[,b]) => a.localeCompare(b, 'zh-Hans-CN'));
-            for (const [id, name] of candidates) {
-                const label = document.createElement('label');
-                const input = document.createElement('input');
-                input.type = 'checkbox';
-                input.dataset.id = id;
-                input.checked = false;
-                input.onchange = (e) => {
-                    if (e.target.checked) {
-                        SELECTIONS.allowTraits.add(Number(id));
+
+            // Bronze All (Clear)
+            const bronzeAll = document.createElement('img');
+            bronzeAll.src = '/static/fgo-icon/铜卡All.png';
+            bronzeAll.className = 'class-icon-btn';
+            bronzeAll.title = '全部取消';
+            bronzeAll.onclick = () => {
+                SELECTIONS.allowTraits.clear();
+                renderMainClassFilters();
+                saveState();
+            };
+            container.appendChild(bronzeAll);
+
+            // Gold All (Select All)
+            const goldAll = document.createElement('img');
+            goldAll.src = '/static/fgo-icon/金卡All.png';
+            goldAll.className = 'class-icon-btn';
+            goldAll.title = '全选';
+            goldAll.onclick = () => {
+                CLASS_TRAITS.forEach(c => {
+                    if (Array.isArray(c.trait)) c.trait.forEach(t => SELECTIONS.allowTraits.add(t));
+                    else SELECTIONS.allowTraits.add(c.trait);
+                });
+                renderMainClassFilters();
+                saveState();
+            };
+            container.appendChild(goldAll);
+
+            // Individual classes
+            CLASS_TRAITS.forEach(({name, trait}) => {
+                const isSelected = Array.isArray(trait) ? trait.every(t => SELECTIONS.allowTraits.has(t)) : SELECTIONS.allowTraits.has(trait);
+                const img = document.createElement('img');
+                img.className = 'class-icon-btn';
+                img.src = `/static/fgo-icon/${isSelected ? '金卡' : '铜卡'}${name}.png`;
+                img.title = name;
+                img.onclick = () => {
+                    if (isSelected) {
+                        if (Array.isArray(trait)) trait.forEach(t => SELECTIONS.allowTraits.delete(t));
+                        else SELECTIONS.allowTraits.delete(trait);
                     } else {
-                        SELECTIONS.allowTraits.delete(Number(id));
+                        if (Array.isArray(trait)) trait.forEach(t => SELECTIONS.allowTraits.add(t));
+                        else SELECTIONS.allowTraits.add(trait);
                     }
-                    renderSelectedTraits();
+                    renderMainClassFilters();
                     saveState();
                 };
-                label.appendChild(input);
-                label.append(` ${name}`);
-                container.appendChild(label);
-            }
-            if (candidates.length === 0) {
-                const hint = document.createElement('small');
-                hint.style.opacity = '0.8';
-                hint.textContent = '无匹配特性';
-                container.appendChild(hint);
-            }
-        }
-
-        function clearTraits() {
-            if (confirm('确定要清空所有已选特性吗？')) {
-                SELECTIONS.allowTraits.clear();
-                renderSelectedTraits();
-                saveState();
-            }
+                container.appendChild(img);
+            });
         }
 
         // --- 弹窗逻辑 ---
@@ -661,21 +723,100 @@
             currentModal = { type, list };
             document.getElementById('modal-title').textContent = `添加${list === 'include' ? '必选' : '排除'}${type === 'svt' ? '从者' : '礼装'}`;
             document.getElementById('modal-search').value = '';
+            
+            const filterContainer = document.getElementById('modal-filter-container');
+            if (type === 'svt') {
+                filterContainer.style.display = 'block';
+                initFilters();
+            } else {
+                filterContainer.style.display = 'none';
+            }
+            
             populateModalGrid();
             document.getElementById('add-modal').showModal();
         }
 
+        function initFilters() {
+            // Reset filter state if needed, or keep it? User might want to keep filters while adding multiple servants.
+            // Let's keep it but render.
+            renderStarFilters();
+            renderClassFilters();
+        }
+
+        function renderStarFilters() {
+            const container = document.getElementById('star-filters');
+            container.innerHTML = '';
+            [0, 1, 2, 3, 4, 5].forEach(star => {
+                const label = document.createElement('label');
+                label.className = 'star-filter-label';
+                const input = document.createElement('input');
+                input.type = 'checkbox';
+                input.checked = FILTER_STATE.stars.has(STAR_TRAITS[star]);
+                input.onchange = (e) => {
+                    if (e.target.checked) FILTER_STATE.stars.add(STAR_TRAITS[star]);
+                    else FILTER_STATE.stars.delete(STAR_TRAITS[star]);
+                    populateModalGrid(document.getElementById('modal-search').value);
+                };
+                label.appendChild(input);
+                label.append(`${star}星`);
+                container.appendChild(label);
+            });
+        }
+
+        function renderClassFilters() {
+            const container = document.getElementById('class-filters');
+            container.innerHTML = '';
+
+            // All buttons
+            const bronzeAll = document.createElement('img');
+            bronzeAll.src = '/static/fgo-icon/铜卡All.png';
+            bronzeAll.className = 'class-icon-btn';
+            bronzeAll.title = '全部取消';
+            bronzeAll.onclick = () => {
+                FILTER_STATE.classes.clear();
+                renderClassFilters();
+                populateModalGrid(document.getElementById('modal-search').value);
+            };
+            container.appendChild(bronzeAll);
+
+            const goldAll = document.createElement('img');
+            goldAll.src = '/static/fgo-icon/金卡All.png';
+            goldAll.className = 'class-icon-btn';
+            goldAll.title = '全选';
+            goldAll.onclick = () => {
+                CLASS_TRAITS.forEach(c => {
+                    if (Array.isArray(c.trait)) c.trait.forEach(t => FILTER_STATE.classes.add(t));
+                    else FILTER_STATE.classes.add(c.trait);
+                });
+                renderClassFilters();
+                populateModalGrid(document.getElementById('modal-search').value);
+            };
+            container.appendChild(goldAll);
+
+            // Individual classes
+            CLASS_TRAITS.forEach(({name, trait}) => {
+                const isSelected = Array.isArray(trait) ? trait.every(t => FILTER_STATE.classes.has(t)) : FILTER_STATE.classes.has(trait);
+                const img = document.createElement('img');
+                img.className = 'class-icon-btn';
+                img.src = `/static/fgo-icon/${isSelected ? '金卡' : '铜卡'}${name}.png`;
+                img.title = name;
+                img.onclick = () => {
+                    if (isSelected) {
+                        if (Array.isArray(trait)) trait.forEach(t => FILTER_STATE.classes.delete(t));
+                        else FILTER_STATE.classes.delete(trait);
+                    } else {
+                        if (Array.isArray(trait)) trait.forEach(t => FILTER_STATE.classes.add(t));
+                        else FILTER_STATE.classes.add(trait);
+                    }
+                    renderClassFilters();
+                    populateModalGrid(document.getElementById('modal-search').value);
+                };
+                container.appendChild(img);
+            });
+        }
+
         function closeModal() {
             document.getElementById('add-modal').close();
-        }
-
-        function openTraitModal() {
-            populateTraitModalGrid();
-            document.getElementById('trait-modal').showModal();
-        }
-
-        function closeTraitModal() {
-            document.getElementById('trait-modal').close();
         }
 
         function openSvtDiffModal(svt) {
@@ -735,7 +876,28 @@
             const items = currentModal.type === 'svt' ? ALL_DATA.servants : ALL_DATA.craftEssences;
 
             items
-                .filter(item => item.name?.toLowerCase().includes(filter.toLowerCase()))
+                .filter(item => {
+                    const matchesName = item.name?.toLowerCase().includes(filter.toLowerCase());
+                    if (!matchesName) return false;
+
+                    if (currentModal.type === 'svt') {
+                        const detail = item.diff.default || Object.values(item.diff)[0];
+                        if (!detail) return false;
+                        
+                        // 星级过滤
+                        if (FILTER_STATE.stars.size > 0) {
+                            const hasStar = detail.traits.some(t => FILTER_STATE.stars.has(t));
+                            if (!hasStar) return false;
+                        }
+
+                        // 职阶过滤
+                        if (FILTER_STATE.classes.size > 0) {
+                            const hasClass = detail.traits.some(t => FILTER_STATE.classes.has(t));
+                            if (!hasClass) return false;
+                        }
+                    }
+                    return true;
+                })
                 .forEach(item => {
                     let img;
                     if (currentModal.type === 'svt') {
@@ -749,48 +911,6 @@
                     const div = createAvatar(item.id, name, img, () => addItem(item.id), null, currentModal.type === 'ce');
                     grid.appendChild(div);
                 });
-        }
-
-        function populateTraitModalGrid(filter = '') {
-            const grid = document.getElementById('trait-modal-grid');
-            grid.innerHTML = '';
-            const q = (filter || '').trim().toLowerCase();
-            
-            const candidates = Object.entries(ALL_DATA.traits)
-                .filter(([, name]) => name && name.trim().length > 0) // 过滤空名称
-                .filter(([, name]) => name.toLowerCase().includes(q));
-
-            candidates.sort(([,a],[,b]) => a.localeCompare(b, 'zh-Hans-CN'));
-
-            for (const [id, name] of candidates) {
-                const label = document.createElement('label');
-                label.style.display = 'flex';
-                label.style.alignItems = 'center';
-                label.style.gap = '8px';
-                label.style.padding = '4px 8px';
-                label.style.borderRadius = '4px';
-                label.style.cursor = 'pointer';
-                label.onmouseover = () => label.style.background = 'rgba(0,0,0,0.05)';
-                label.onmouseout = () => label.style.background = 'transparent';
-
-                const input = document.createElement('input');
-                input.type = 'checkbox';
-                input.dataset.id = id;
-                input.style.margin = '0';
-                input.checked = SELECTIONS.allowTraits.has(Number(id));
-                input.onchange = (e) => {
-                    if (e.target.checked) {
-                        SELECTIONS.allowTraits.add(Number(id));
-                    } else {
-                        SELECTIONS.allowTraits.delete(Number(id));
-                    }
-                    renderSelectedTraits();
-                    saveState();
-                };
-                label.appendChild(input);
-                label.append(`${name}`);
-                grid.appendChild(label);
-            }
         }
 
         document.getElementById('modal-search').addEventListener('input', (e) => {
@@ -1075,6 +1195,14 @@
         }
 
         // --- 辅助函数 ---
+        function openDonateModal() {
+            document.getElementById('donate-modal').showModal();
+        }
+
+        function closeDonateModal() {
+            document.getElementById('donate-modal').close();
+        }
+
         function refreshIcons() {
             lucide.createIcons();
         }

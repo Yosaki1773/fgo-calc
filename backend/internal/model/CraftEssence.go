@@ -7,6 +7,7 @@ type CraftEssence struct {
 	Name    string   `json:"name"`
 	Img     string   `json:"img"`
 	Cost    int      `json:"cost"`
+	Server  string   `json:"server"`
 	Filters []Filter `json:"filters"`
 }
 

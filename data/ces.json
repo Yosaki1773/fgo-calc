@@ -1,54 +1,5 @@
 [
     {
-        "id": 9408800,
-        "name": "异星之神",
-        "img": "https://static.atlasacademy.io/JP/EquipFaces/f_94088000.png",
-        "cost": 12,
-        "filters": [
-            [
-                [
-                    304
-                ],
-                20
-            ],
-            [
-                [
-                    203
-                ],
-                20
-            ]
-        ]
-    },
-    {
-        "id": 9408590,
-        "name": "献给幸福的新娘",
-        "img": "https://static.atlasacademy.io/JP/EquipFaces/f_94085900.png",
-        "cost": 12,
-        "filters": [
-            [
-                [
-                    300,
-                    2
-                ],
-                20
-            ]
-        ]
-    },
-    {
-        "id": 9408390,
-        "name": "至诚的一针",
-        "img": "https://static.atlasacademy.io/JP/EquipFaces/f_94083900.png",
-        "cost": 12,
-        "filters": [
-            [
-                [
-                    2780
-                ],
-                20
-            ]
-        ]
-    },
-    {
         "id": 9408220,
         "name": "秘密任务",
         "img": "https://static.atlasacademy.io/JP/EquipFaces/f_94082200.png",
@@ -266,7 +217,60 @@
                 ],
                 20
             ]
-        ]
+        ],
+        "server": "JP"
+    },
+    {
+        "id": 9408800,
+        "name": "异星之神",
+        "img": "https://static.atlasacademy.io/JP/EquipFaces/f_94088000.png",
+        "cost": 12,
+        "filters": [
+            [
+                [
+                    304
+                ],
+                20
+            ],
+            [
+                [
+                    203
+                ],
+                20
+            ]
+        ],
+        "server": "JP"
+    },
+    {
+        "id": 9408590,
+        "name": "献给幸福的新娘",
+        "img": "https://static.atlasacademy.io/JP/EquipFaces/f_94085900.png",
+        "cost": 12,
+        "filters": [
+            [
+                [
+                    300,
+                    2
+                ],
+                20
+            ]
+        ],
+        "server": "JP"
+    },
+    {
+        "id": 9408390,
+        "name": "至诚的一针",
+        "img": "https://static.atlasacademy.io/JP/EquipFaces/f_94083900.png",
+        "cost": 12,
+        "filters": [
+            [
+                [
+                    2780
+                ],
+                20
+            ]
+        ],
+        "server": "JP"
     },
     {
         "id": 9311320,
@@ -278,7 +282,8 @@
                 [],
                 2
             ]
-        ]
+        ],
+        "server": "JP"
     },
     {
         "id": 9311450,
@@ -290,6 +295,7 @@
                 [],
                 2
             ]
-        ]
+        ],
+        "server": "JP"
     }
 ]
