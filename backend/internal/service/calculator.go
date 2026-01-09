@@ -12,7 +12,8 @@ import (
 )
 
 const OPTIMIZE_LIMIT = 5
-const TEA_TIME_ID = 9403520
+const TEATIME_ID = 9403520
+const LUNCHTIME_ID = 9401970
 
 type CalculatorService struct {
 	repo *repository.Repository
@@ -71,11 +72,66 @@ func (s *CalculatorService) FilterServants(traits []int, includeSvt []int, exclu
 	return result
 }
 
-func (s *CalculatorService) computeEffectsForCombo(ceCombo []model.CraftEssence, svtId int, diffKey string) (float64, int) {
+func (s *CalculatorService) GetSupportCombinations(supportLimit int, serverType string) [][]model.CraftEssence {
+	if supportLimit <= 0 {
+		return [][]model.CraftEssence{{}}
+	}
+
+	supportPool := []model.CraftEssence{}
+	craftEssences := s.repo.GetCraftEssences()
+	for _, ce := range craftEssences {
+		if ce.Server == "JP" && serverType != "JP" {
+			continue
+		}
+		if ce.Id == TEATIME_ID || ce.Id == LUNCHTIME_ID {
+			supportPool = append(supportPool, ce)
+			continue
+		}
+		for _, filter := range ce.Filters {
+			if filter.Effect >= 20 {
+				supportPool = append(supportPool, ce)
+				break
+			}
+		}
+	}
+
+	results := [][]model.CraftEssence{}
+	if supportLimit == 1 {
+		for _, ce := range supportPool {
+			results = append(results, []model.CraftEssence{ce})
+		}
+	} else if supportLimit == 2 {
+		for i := 0; i < len(supportPool); i++ {
+			for j := i + 1; j < len(supportPool); j++ {
+				results = append(results, []model.CraftEssence{supportPool[i], supportPool[j]})
+			}
+		}
+	}
+
+	return results
+}
+
+func (s *CalculatorService) computeTotalEffects(userCEs []model.CraftEssence, supportCEs []model.CraftEssence, svtId int, diffKey string) (float64, int) {
 	totalPercent := 0.0
 	totalDirect := 0
 	ceEffects := s.repo.GetCeEffects()
-	for _, ce := range ceCombo {
+
+	for _, ce := range userCEs {
+		if m1, ok := ceEffects[ce.Id]; ok {
+			if m2, ok2 := m1[svtId]; ok2 {
+				if eff, ok3 := m2[diffKey]; ok3 {
+					totalPercent += eff.Percent
+					totalDirect += eff.Direct
+				}
+			}
+		}
+	}
+
+	for _, ce := range supportCEs {
+		if ce.Id == TEATIME_ID {
+			totalPercent += 15.0
+			continue
+		}
 		if m1, ok := ceEffects[ce.Id]; ok {
 			if m2, ok2 := m1[svtId]; ok2 {
 				if eff, ok3 := m2[diffKey]; ok3 {
@@ -87,6 +143,7 @@ func (s *CalculatorService) computeEffectsForCombo(ceCombo []model.CraftEssence,
 	}
 	return totalPercent, totalDirect
 }
+
 
 func (s *CalculatorService) FindInPool(id int, cePool []model.CraftEssence, included []model.CraftEssence) bool {
 	for _, ce := range cePool {
@@ -221,89 +278,6 @@ func (s *CalculatorService) GetCombination(num int, includeCe []int, excludeCe [
 	return results
 }
 
-func (s *CalculatorService) calculateBestSupport(team *model.Team, baseBond int, supportLimit int, serverType string, enableEventBonus bool, selectedEvents map[int]bool) (int, []model.CraftEssence) {
-	if supportLimit <= 0 {
-		return 0, []model.CraftEssence{}
-	}
-
-	supportPool := []model.CraftEssence{}
-	craftEssences := s.repo.GetCraftEssences()
-	for _, ce := range craftEssences {
-		if ce.Server == "JP" && serverType != "JP" {
-			continue
-		}
-		if ce.Id == TEA_TIME_ID || ce.Id == 9401970 { // Tea Time or Lunchtime
-			supportPool = append(supportPool, ce)
-			continue
-		}
-		// Check for >= 20% bond effect
-		for _, filter := range ce.Filters {
-			if filter.Effect >= 20 {
-				supportPool = append(supportPool, ce)
-				break
-			}
-		}
-	}
-
-	bestBonus := 0
-	bestCEs := []model.CraftEssence{}
-
-	ceEffects := s.repo.GetCeEffects()
-
-	// Helper to calculate bonus for a set of support CEs
-	calcBonus := func(ces []model.CraftEssence) int {
-		totalBonusContribution := 0
-		for i, svt := range team.Servants {
-			svtPercent := 0.0
-			svtDirect := 0
-			diffKey := team.DiffChoice[i]
-			for _, ce := range ces {
-				if ce.Id == TEA_TIME_ID {
-					svtPercent += 15.0
-					continue
-				}
-				if m1, ok := ceEffects[ce.Id]; ok {
-					if m2, ok2 := m1[svt.Id]; ok2 {
-						if eff, ok3 := m2[diffKey]; ok3 {
-							svtPercent += eff.Percent
-							svtDirect += eff.Direct
-						}
-					}
-				}
-			}
-			contribution := int(float64(baseBond)*svtPercent/100.0) + svtDirect
-			if enableEventBonus {
-				contribution = int(float64(contribution) * s.getEventMultiplier(svt, serverType, selectedEvents))
-			}
-			totalBonusContribution += contribution
-		}
-		return totalBonusContribution
-	}
-
-	if supportLimit == 1 {
-		for _, ce := range supportPool {
-			bonus := calcBonus([]model.CraftEssence{ce})
-			if bonus > bestBonus {
-				bestBonus = bonus
-				bestCEs = []model.CraftEssence{ce}
-			}
-		}
-	} else if supportLimit == 2 {
-		// Allow duplicates, so nested loop over same pool
-		for i := 0; i < len(supportPool); i++ {
-			for j := i + 1; j < len(supportPool); j++ { // Optimization: order doesn't matter
-				ces := []model.CraftEssence{supportPool[i], supportPool[j]}
-				bonus := calcBonus(ces)
-				if bonus > bestBonus {
-					bestBonus = bonus
-					bestCEs = ces
-				}
-			}
-		}
-	}
-
-	return bestBonus, bestCEs
-}
 
 func (s *CalculatorService) getEventBonus(svt *model.Servant, serverType string, selectedEvents map[int]bool) int {
 	bonus := 0
@@ -355,13 +329,18 @@ func (s *CalculatorService) Optimize(costLimit int, svtLimit int, ceLimit int, s
 		mince = ceLimit
 	}
 
-	cePool := [][]model.CraftEssence{}
+	// Prepare Support CE Pool
+	supportPool := s.GetSupportCombinations(supportLimit, serverType)
+
+	// Prepare User CE Pool
+	userCePool := [][]model.CraftEssence{}
 	for i := mince; i <= ceLimit; i++ {
 		combs := s.GetCombination(i, includeCe, excludeCe, serverType)
-		cePool = append(cePool, combs...)
+		userCePool = append(userCePool, combs...)
 	}
 
-	log.Println("CE Pool: ", len(cePool))
+	log.Println("User CE Pool: ", len(userCePool))
+	log.Println("Support CE Pool: ", len(supportPool))
 
 	svtPool := s.FilterServants(allowTraits, includeSvt, excludeSvt)
 	log.Println("Servant Pool: ", len(svtPool))
@@ -377,8 +356,13 @@ func (s *CalculatorService) Optimize(costLimit int, svtLimit int, ceLimit int, s
 		}
 	}
 
+	type Job struct {
+		UserCEs    []model.CraftEssence
+		SupportCEs []model.CraftEssence
+	}
+
 	numWorkers := runtime.GOMAXPROCS(0)
-	ceJobs := make(chan []model.CraftEssence, numWorkers*2)
+	ceJobs := make(chan Job, numWorkers*2)
 	resultsChan := make(chan []model.Team, numWorkers*2)
 	var wg sync.WaitGroup
 
@@ -396,12 +380,17 @@ func (s *CalculatorService) Optimize(costLimit int, svtLimit int, ceLimit int, s
 			paths[i] = make([]*model.PathNode, maxCost)
 		}
 
-		for ceCombo := range ceJobs {
+		for job := range ceJobs {
+			ceCombo := job.UserCEs
+			supportCombo := job.SupportCEs
+			
 			localTeams := []model.Team{}
 			ceCost := 0
 			for _, ce := range ceCombo {
 				ceCost += ce.Cost
 			}
+			// Support CEs do not cost anything
+
 			if ceCost > costLimit {
 				resultsChan <- localTeams
 				continue
@@ -414,7 +403,7 @@ func (s *CalculatorService) Optimize(costLimit int, svtLimit int, ceLimit int, s
 				if includeSvtSet[svt.Id] {
 					if diffKey, ok := includeSvtDiffMap[svt.Id]; ok {
 						if detail, ok := svt.Diff[diffKey]; ok {
-							totalPercent, totalDirect := s.computeEffectsForCombo(ceCombo, svt.Id, diffKey)
+							totalPercent, totalDirect := s.computeTotalEffects(ceCombo, supportCombo, svt.Id, diffKey)
 							if enableEventBonus {
 								totalPercent += float64(s.getEventBonus(svt, serverType, selectedEvents))
 							}
@@ -431,7 +420,11 @@ func (s *CalculatorService) Optimize(costLimit int, svtLimit int, ceLimit int, s
 							continue
 						}
 					}
-					totalPercent, totalDirect := s.computeEffectsForCombo(ceCombo, svt.Id, "default")
+					// Default fallback logic for mandatory servants if diffKey invalid
+					// ... (same logic as before but with computeTotalEffects)
+					// Actually the previous code had a complex block here. Let's simplify/copy carefully.
+					
+					totalPercent, totalDirect := s.computeTotalEffects(ceCombo, supportCombo, svt.Id, "default")
 					if enableEventBonus {
 						totalPercent += float64(s.getEventBonus(svt, serverType, selectedEvents))
 					}
@@ -442,7 +435,7 @@ func (s *CalculatorService) Optimize(costLimit int, svtLimit int, ceLimit int, s
 					bestDiffKey := "default"
 					bestCost := svt.Diff["default"].Cost
 					for key, detail := range svt.Diff {
-						totalPercent, totalDirect := s.computeEffectsForCombo(ceCombo, svt.Id, key)
+						totalPercent, totalDirect := s.computeTotalEffects(ceCombo, supportCombo, svt.Id, key)
 						if enableEventBonus {
 							totalPercent += float64(s.getEventBonus(svt, serverType, selectedEvents))
 						}
@@ -483,9 +476,10 @@ func (s *CalculatorService) Optimize(costLimit int, svtLimit int, ceLimit int, s
 
 			if currentSvtLimit == 0 {
 				team := model.Team{
-					CraftEssences: ceCombo,
-					TotalBond:     mandatoryBond,
-					TotalCost:     ceCost + mandatoryCost,
+					CraftEssences:        ceCombo,
+					SupportCraftEssences: supportCombo,
+					TotalBond:            mandatoryBond,
+					TotalCost:            ceCost + mandatoryCost,
 				}
 				for _, sb := range mandatoryBonuses {
 					team.Servants = append(team.Servants, sb.Svt)
@@ -499,7 +493,7 @@ func (s *CalculatorService) Optimize(costLimit int, svtLimit int, ceLimit int, s
 			optionalBonuses := make([]model.SvtBonus, 0, len(currentSvtPool))
 			for i := range currentSvtPool {
 				svt := &currentSvtPool[i]
-				totalPercent, totalDirect := s.computeEffectsForCombo(ceCombo, svt.Id, "default")
+				totalPercent, totalDirect := s.computeTotalEffects(ceCombo, supportCombo, svt.Id, "default")
 				if enableEventBonus {
 					totalPercent += float64(s.getEventBonus(svt, serverType, selectedEvents))
 				}
@@ -513,7 +507,7 @@ func (s *CalculatorService) Optimize(costLimit int, svtLimit int, ceLimit int, s
 					if key == "default" {
 						continue
 					}
-					totalPercent, totalDirect := s.computeEffectsForCombo(ceCombo, svt.Id, key)
+					totalPercent, totalDirect := s.computeTotalEffects(ceCombo, supportCombo, svt.Id, key)
 					if enableEventBonus {
 						totalPercent += float64(s.getEventBonus(svt, serverType, selectedEvents))
 					}
@@ -537,9 +531,10 @@ func (s *CalculatorService) Optimize(costLimit int, svtLimit int, ceLimit int, s
 
 			if len(optionalBonuses) == 0 {
 				team := model.Team{
-					CraftEssences: ceCombo,
-					TotalBond:     mandatoryBond,
-					TotalCost:     ceCost + mandatoryCost,
+					CraftEssences:        ceCombo,
+					SupportCraftEssences: supportCombo,
+					TotalBond:            mandatoryBond,
+					TotalCost:            ceCost + mandatoryCost,
 				}
 				for _, sb := range mandatoryBonuses {
 					team.Servants = append(team.Servants, sb.Svt)
@@ -605,8 +600,9 @@ func (s *CalculatorService) Optimize(costLimit int, svtLimit int, ceLimit int, s
 					}
 
 					team := model.Team{
-						CraftEssences: ceCombo,
-						TotalBond:     mandatoryBond,
+						CraftEssences:        ceCombo,
+						SupportCraftEssences: supportCombo,
+						TotalBond:            mandatoryBond,
 					}
 					for _, sb := range mandatoryBonuses {
 						team.Servants = append(team.Servants, sb.Svt)
@@ -631,8 +627,10 @@ func (s *CalculatorService) Optimize(costLimit int, svtLimit int, ceLimit int, s
 	}
 
 	go func() {
-		for _, ceCombo := range cePool {
-			ceJobs <- ceCombo
+		for _, userCEs := range userCePool {
+			for _, supportCEs := range supportPool {
+				ceJobs <- Job{UserCEs: userCEs, SupportCEs: supportCEs}
+			}
 		}
 		close(ceJobs)
 	}()
@@ -642,74 +640,19 @@ func (s *CalculatorService) Optimize(costLimit int, svtLimit int, ceLimit int, s
 		close(resultsChan)
 	}()
 
-	deltaMax := 0
-	if supportLimit > 0 {
-		// DeltaMax = supportLimit * (MaxBond% - MinBond%) * BaseBond
-		// MaxBond% = 20%, MinBond% = 15% (TeaTime) -> 5% diff
-		deltaMax = int(float64(baseBond) * 0.05 * float64(svtLimit) * float64(supportLimit))
-	}
-
 	h := &model.TeamHeap{}
 	heap.Init(h)
-	// We need to store potentially optimal teams.
-	// We will keep a larger set of teams in the heap, and then filter/re-rank at the end.
-	// However, standard heap keeps smallest at top. We want to keep largest.
-	// The standard logic was keeping TOP-N. Now we need "All within DeltaMax of Max".
-	// Since we don't know the true global max until the end, we can track the current max seen so far.
-	
-	globalMaxBond := 0
-	allCandidates := []model.Team{}
 
 	for teams := range resultsChan {
 		for _, team := range teams {
-			if team.TotalBond > globalMaxBond {
-				globalMaxBond = team.TotalBond
-			}
-			if team.TotalBond >= globalMaxBond-deltaMax {
-				allCandidates = append(allCandidates, team)
-			}
-		}
-		// Periodically prune to save memory
-		if len(allCandidates) > 100000 {
-			threshold := globalMaxBond - deltaMax
-			n := 0
-			for i := range allCandidates {
-				if allCandidates[i].TotalBond >= threshold {
-					allCandidates[n] = allCandidates[i]
-					n++
+			if h.Len() < OPTIMIZE_LIMIT {
+				heap.Push(h, team)
+			} else {
+				top := (*h)[0]
+				if team.TotalBond > top.TotalBond || (team.TotalBond == top.TotalBond && team.TotalCost > top.TotalCost) {
+					(*h)[0] = team
+					heap.Fix(h, 0)
 				}
-			}
-			allCandidates = allCandidates[:n]
-		}
-	}
-
-	// Filter candidates based on final globalMaxBond
-	finalCandidates := []model.Team{}
-	threshold := globalMaxBond - deltaMax
-	for _, team := range allCandidates {
-		if team.TotalBond >= threshold {
-			finalCandidates = append(finalCandidates, team)
-		}
-	}
-
-	// Calculate support bonuses for final candidates
-	for i := range finalCandidates {
-		bonus, ces := s.calculateBestSupport(&finalCandidates[i], baseBond, supportLimit, serverType, enableEventBonus, selectedEvents)
-		finalCandidates[i].TotalBond += bonus
-		finalCandidates[i].SupportCraftEssences = ces
-	}
-
-	// Re-build heap with final scores to get top N
-	h = &model.TeamHeap{}
-	heap.Init(h)
-	for _, team := range finalCandidates {
-		if h.Len() < OPTIMIZE_LIMIT {
-			heap.Push(h, team)
-		} else {
-			top := (*h)[0]
-			if team.TotalBond > top.TotalBond || (team.TotalBond == top.TotalBond && team.TotalCost > top.TotalCost) {
-				(*h)[0] = team
-				heap.Fix(h, 0)
 			}
 		}
 	}
@@ -726,11 +669,11 @@ func (s *CalculatorService) Optimize(costLimit int, svtLimit int, ceLimit int, s
 	for i := 0; i < limit; i++ {
 		team := sortedTeams[i]
 		response := model.TeamResponse{
-			Servants:            team.Servants,
-			DiffChoice:          team.DiffChoice,
-			TotalCost:           team.TotalCost,
-			TotalBond:           team.TotalBond,
-			CraftEssences:       make([]model.TeamResultCE, len(team.CraftEssences)),
+			Servants:             team.Servants,
+			DiffChoice:           team.DiffChoice,
+			TotalCost:            team.TotalCost,
+			TotalBond:            team.TotalBond,
+			CraftEssences:        make([]model.TeamResultCE, len(team.CraftEssences)),
 			SupportCraftEssences: make([]model.TeamResultCE, len(team.SupportCraftEssences)),
 		}
 
@@ -757,7 +700,7 @@ func (s *CalculatorService) Optimize(costLimit int, svtLimit int, ceLimit int, s
 			totalContribution := 0
 			for k, svt := range team.Servants {
 				diffKey := team.DiffChoice[k]
-				if ce.Id == TEA_TIME_ID {
+				if ce.Id == TEATIME_ID {
 					totalContribution += int(float64(baseBond) * 15.0 / 100.0)
 				} else {
 					if m1, ok := ceEffects[ce.Id]; ok {
