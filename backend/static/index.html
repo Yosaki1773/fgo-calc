@@ -307,6 +307,72 @@
         .section-header h6 {
             margin-bottom: 0;
         }
+        .collapse-toggle {
+            appearance: none;
+            font-size: 0.95rem;
+            line-height: 1;
+            padding: 0.2rem 0.4rem;
+            min-width: 2rem;
+            height: 2rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--pico-muted-border-color);
+            border-radius: var(--pico-border-radius);
+            background: transparent !important;
+            color: var(--pico-muted-color);
+            cursor: pointer;
+            transition: border-color 0.2s, color 0.2s, background-color 0.2s;
+        }
+        .collapse-toggle:focus,
+        .collapse-toggle:active {
+            background: transparent !important;
+            box-shadow: none;
+        }
+        .collapse-toggle:hover {
+            border-color: var(--pico-primary);
+            color: var(--pico-primary);
+            background: rgba(var(--pico-primary-rgb), 0.08);
+        }
+        .collapse-toggle .triangle {
+            display: inline-block;
+            font-size: 0.9rem;
+            line-height: 1;
+            transform-origin: center;
+            transition: transform 0.2s ease;
+        }
+        .collapse-toggle.is-collapsed .triangle {
+            transform: rotate(-90deg);
+        }
+        .collapsible-panel.is-collapsed {
+            display: none;
+        }
+        .selection-grid.is-collapsed {
+            display: none;
+        }
+        .exclude-svt-filter-group {
+            margin-top: 0.2rem;
+            margin-bottom: 0.75rem;
+            justify-content: flex-start;
+            gap: 0.35rem;
+            padding: 0 0.25rem;
+        }
+        .exclude-svt-filter-label {
+            font-size: 0.75rem;
+            color: var(--pico-muted-color);
+            margin-right: 0.25rem;
+            white-space: nowrap;
+        }
+        .exclude-filter-icon-btn {
+            width: 26px;
+            height: 26px;
+            cursor: pointer;
+            transition: transform 0.1s;
+            object-fit: contain;
+        }
+        .exclude-filter-icon-btn:hover {
+            transform: scale(1.08);
+        }
         .result-actions {
             display: flex;
             flex-direction: column;
@@ -425,6 +491,9 @@
             <div class="grid">
                 <div>
                     <div class="section-header">
+                        <button type="button" class="collapse-toggle" data-collapse-key="includeSvt" aria-controls="include-svt-list" aria-expanded="true" title="收起必选从者" aria-label="收起必选从者">
+                            <span class="triangle">▼</span>
+                        </button>
                         <h6>必选从者</h6>
                         <button class="outline btn-add" onclick="openModal('svt', 'include')"><i data-lucide="user-plus"></i> 添加</button>
                     </div>
@@ -432,10 +501,16 @@
                 </div>
                 <div>
                     <div class="section-header">
+                        <button type="button" class="collapse-toggle" data-collapse-key="excludeSvt" aria-controls="exclude-svt-panel" aria-expanded="true" title="收起排除从者" aria-label="收起排除从者">
+                            <span class="triangle">▼</span>
+                        </button>
                         <h6>排除从者</h6>
                         <button class="outline btn-add" onclick="openModal('svt', 'exclude')"><i data-lucide="user-minus"></i> 添加</button>
                     </div>
-                    <div class="selection-grid" id="exclude-svt-list"></div>
+                    <div id="exclude-svt-panel" class="collapsible-panel">
+                        <div id="exclude-svt-class-filters" class="filter-group exclude-svt-filter-group"></div>
+                        <div class="selection-grid" id="exclude-svt-list"></div>
+                    </div>
                 </div>
             </div>
 
@@ -444,6 +519,9 @@
             <div class="grid">
                 <div>
                     <div class="section-header">
+                        <button type="button" class="collapse-toggle" data-collapse-key="includeCe" aria-controls="include-ce-list" aria-expanded="true" title="收起必选礼装" aria-label="收起必选礼装">
+                            <span class="triangle">▼</span>
+                        </button>
                         <h6>必选礼装</h6>
                         <button class="outline btn-add" onclick="openModal('ce', 'include')"><i data-lucide="plus-square"></i> 添加</button>
                     </div>
@@ -451,10 +529,33 @@
                 </div>
                 <div>
                     <div class="section-header">
+                        <button type="button" class="collapse-toggle" data-collapse-key="excludeCe" aria-controls="exclude-ce-list" aria-expanded="true" title="收起排除礼装" aria-label="收起排除礼装">
+                            <span class="triangle">▼</span>
+                        </button>
                         <h6>排除礼装</h6>
                         <button class="outline btn-add" onclick="openModal('ce', 'exclude')"><i data-lucide="minus-square"></i> 添加</button>
                     </div>
                     <div class="selection-grid" id="exclude-ce-list"></div>
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="grid">
+                <div>
+                    <div class="section-header">
+                        <h6>锁定助战礼装</h6>
+                        <button class="outline btn-add" onclick="openModal('ce', 'supportLock')"><i data-lucide="lock"></i> 添加</button>
+                    </div>
+                    <small style="display: block; margin-bottom: 0.5rem; opacity: 0.8;">最多可选 <span id="support-lock-limit-text">1</span> 个（与“助战礼装数量”一致）</small>
+                    <div class="selection-grid" id="support-lock-ce-list"></div>
+                </div>
+                <div>
+                    <div class="section-header">
+                        <h6>排除助战礼装</h6>
+                        <button class="outline btn-add" onclick="openModal('ce', 'excludeSupport')"><i data-lucide="minus-square"></i> 添加</button>
+                    </div>
+                    <div class="selection-grid" id="exclude-support-ce-list"></div>
                 </div>
             </div>
 
@@ -560,6 +661,8 @@
             excludeSvt: new Set(),
             includeCe: new Set(),
             excludeCe: new Set(),
+            supportLockCe: new Set(),
+            excludeSupportCe: new Set(),
             allowTraits: new Set(),
             selectedEvents: new Set()
         };
@@ -591,8 +694,204 @@
             stars: new Set(),
             classes: new Set()
         };
+        let EXCLUDE_SVT_CLASS_FILTER = new Set();
 
         const STORAGE_KEY = 'fgo-calc-state';
+        const COLLAPSE_SECTION_CONFIG = {
+            includeSvt: { containerId: 'include-svt-list', label: '必选从者' },
+            excludeSvt: { containerId: 'exclude-svt-panel', label: '排除从者' },
+            includeCe: { containerId: 'include-ce-list', label: '必选礼装' },
+            excludeCe: { containerId: 'exclude-ce-list', label: '排除礼装' }
+        };
+        let UI_STATE = {
+            collapsedSections: {
+                includeSvt: false,
+                excludeSvt: false,
+                includeCe: false,
+                excludeCe: false
+            }
+        };
+
+        function applySectionCollapse(key) {
+            const section = COLLAPSE_SECTION_CONFIG[key];
+            if (!section) return;
+            const container = document.getElementById(section.containerId);
+            const toggle = document.querySelector(`.collapse-toggle[data-collapse-key="${key}"]`);
+            if (!container || !toggle) return;
+
+            const isCollapsed = !!UI_STATE.collapsedSections[key];
+            container.classList.toggle('is-collapsed', isCollapsed);
+            toggle.classList.toggle('is-collapsed', isCollapsed);
+            toggle.setAttribute('aria-expanded', String(!isCollapsed));
+
+            const actionText = isCollapsed ? '展开' : '收起';
+            const tip = `${actionText}${section.label}`;
+            toggle.title = tip;
+            toggle.setAttribute('aria-label', tip);
+        }
+
+        function toggleSectionCollapse(key) {
+            if (!(key in UI_STATE.collapsedSections)) return;
+            UI_STATE.collapsedSections[key] = !UI_STATE.collapsedSections[key];
+            applySectionCollapse(key);
+            saveState();
+        }
+
+        function initCollapseToggles() {
+            document.querySelectorAll('.collapse-toggle').forEach(toggle => {
+                const key = toggle.dataset.collapseKey;
+                if (!key || !(key in UI_STATE.collapsedSections)) return;
+                toggle.addEventListener('click', () => toggleSectionCollapse(key));
+                applySectionCollapse(key);
+            });
+        }
+
+        function renderExcludeSvtClassFilters() {
+            const container = document.getElementById('exclude-svt-class-filters');
+            if (!container) return;
+            container.innerHTML = '';
+
+            const label = document.createElement('span');
+            label.className = 'exclude-svt-filter-label';
+            label.textContent = '职阶筛选:';
+            container.appendChild(label);
+
+            const bronzeAll = document.createElement('img');
+            bronzeAll.src = '/static/fgo-icon/铜卡All.png';
+            bronzeAll.className = 'exclude-filter-icon-btn';
+            bronzeAll.title = '全部取消';
+            bronzeAll.onclick = () => {
+                EXCLUDE_SVT_CLASS_FILTER.clear();
+                renderExcludeSvtClassFilters();
+                renderSelectionList('svt', 'exclude');
+                saveState();
+            };
+            container.appendChild(bronzeAll);
+
+            const goldAll = document.createElement('img');
+            goldAll.src = '/static/fgo-icon/金卡All.png';
+            goldAll.className = 'exclude-filter-icon-btn';
+            goldAll.title = '全选';
+            goldAll.onclick = () => {
+                CLASS_TRAITS.forEach(c => {
+                    if (Array.isArray(c.trait)) c.trait.forEach(t => EXCLUDE_SVT_CLASS_FILTER.add(t));
+                    else EXCLUDE_SVT_CLASS_FILTER.add(c.trait);
+                });
+                renderExcludeSvtClassFilters();
+                renderSelectionList('svt', 'exclude');
+                saveState();
+            };
+            container.appendChild(goldAll);
+
+            CLASS_TRAITS.forEach(({name, trait}) => {
+                const isSelected = Array.isArray(trait) ? trait.every(t => EXCLUDE_SVT_CLASS_FILTER.has(t)) : EXCLUDE_SVT_CLASS_FILTER.has(trait);
+                const img = document.createElement('img');
+                img.className = 'exclude-filter-icon-btn';
+                img.src = `/static/fgo-icon/${isSelected ? '金卡' : '铜卡'}${name}.png`;
+                img.title = name;
+                img.onclick = () => {
+                    if (isSelected) {
+                        if (Array.isArray(trait)) trait.forEach(t => EXCLUDE_SVT_CLASS_FILTER.delete(t));
+                        else EXCLUDE_SVT_CLASS_FILTER.delete(trait);
+                    } else {
+                        if (Array.isArray(trait)) trait.forEach(t => EXCLUDE_SVT_CLASS_FILTER.add(t));
+                        else EXCLUDE_SVT_CLASS_FILTER.add(trait);
+                    }
+                    renderExcludeSvtClassFilters();
+                    renderSelectionList('svt', 'exclude');
+                    saveState();
+                };
+                container.appendChild(img);
+            });
+        }
+
+        function getSupportLimitValue() {
+            const raw = parseInt(document.getElementById('support-limit').value, 10);
+            if (Number.isNaN(raw)) return 1;
+            return Math.max(0, raw);
+        }
+
+        function isSupportCandidateCe(ce) {
+            if (!ce) return false;
+            const server = document.getElementById('server-select').value;
+            if (ce.server === 'JP' && server !== 'JP') {
+                return false;
+            }
+            if (ce.id === 9403520 || ce.id === 9401970) {
+                return true;
+            }
+            const filters = ce.filters || [];
+            return filters.some(f => {
+                const effect = typeof f.effect === 'number' ? f.effect : f.Effect;
+                return Number(effect) >= 20;
+            });
+        }
+
+        function refreshSupportLockLimitText() {
+            const el = document.getElementById('support-lock-limit-text');
+            if (!el) return;
+            el.textContent = String(getSupportLimitValue());
+        }
+
+        function enforceSupportLockLimit(showAlert = false) {
+            const limit = getSupportLimitValue();
+            if (SELECTIONS.supportLockCe.size <= limit) return false;
+            const ids = Array.from(SELECTIONS.supportLockCe);
+            SELECTIONS.supportLockCe = new Set(ids.slice(0, limit));
+            renderSelectionList('ce', 'supportLock');
+            if (showAlert) {
+                alert(`锁定助战礼装最多只能保留 ${limit} 个，已自动截断。`);
+            }
+            return true;
+        }
+
+        function pruneInvalidSupportLocks() {
+            let changed = false;
+            for (const id of Array.from(SELECTIONS.supportLockCe)) {
+                const ce = ALL_DATA.craftEssences.find(item => item.id === id);
+                if (!isSupportCandidateCe(ce)) {
+                    SELECTIONS.supportLockCe.delete(id);
+                    changed = true;
+                }
+            }
+            if (changed) {
+                renderSelectionList('ce', 'supportLock');
+            }
+            
+            let excludeChanged = false;
+            for (const id of Array.from(SELECTIONS.excludeSupportCe)) {
+                const ce = ALL_DATA.craftEssences.find(item => item.id === id);
+                if (!isSupportCandidateCe(ce)) {
+                    SELECTIONS.excludeSupportCe.delete(id);
+                    excludeChanged = true;
+                }
+            }
+            if (excludeChanged) {
+                renderSelectionList('ce', 'excludeSupport');
+            }
+            
+            return changed || excludeChanged;
+        }
+
+        function getSelectionKey(type, list) {
+            if (type === 'ce' && list === 'supportLock') {
+                return 'supportLockCe';
+            }
+            if (type === 'ce' && list === 'excludeSupport') {
+                return 'excludeSupportCe';
+            }
+            return `${list}${type.charAt(0).toUpperCase() + type.slice(1)}`;
+        }
+
+        function getSelectionContainerId(type, list) {
+            if (type === 'ce' && list === 'supportLock') {
+                return 'support-lock-ce-list';
+            }
+            if (type === 'ce' && list === 'excludeSupport') {
+                return 'exclude-support-ce-list';
+            }
+            return `${list}-${type}-list`;
+        }
 
         function saveState() {
             const state = {
@@ -610,8 +909,14 @@
                     excludeSvt: Array.from(SELECTIONS.excludeSvt),
                     includeCe: Array.from(SELECTIONS.includeCe),
                     excludeCe: Array.from(SELECTIONS.excludeCe),
+                    supportLockCe: Array.from(SELECTIONS.supportLockCe),
+                    excludeSupportCe: Array.from(SELECTIONS.excludeSupportCe),
                     allowTraits: Array.from(SELECTIONS.allowTraits),
                     selectedEvents: Array.from(SELECTIONS.selectedEvents),
+                },
+                ui: {
+                    collapsedSections: { ...UI_STATE.collapsedSections },
+                    excludeSvtClassFilters: Array.from(EXCLUDE_SVT_CLASS_FILTER)
                 }
             };
             localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
@@ -636,6 +941,8 @@
                     if (state.selections.excludeSvt) SELECTIONS.excludeSvt = new Set(state.selections.excludeSvt);
                     if (state.selections.includeCe) SELECTIONS.includeCe = new Set(state.selections.includeCe);
                     if (state.selections.excludeCe) SELECTIONS.excludeCe = new Set(state.selections.excludeCe);
+                    if (state.selections.supportLockCe) SELECTIONS.supportLockCe = new Set(state.selections.supportLockCe);
+                    if (state.selections.excludeSupportCe) SELECTIONS.excludeSupportCe = new Set(state.selections.excludeSupportCe);
                     if (state.selections.allowTraits) SELECTIONS.allowTraits = new Set(state.selections.allowTraits);
                     if (state.selections.selectedEvents) SELECTIONS.selectedEvents = new Set(state.selections.selectedEvents);
                     
@@ -644,8 +951,25 @@
                     renderSelectionList('svt', 'exclude');
                     renderSelectionList('ce', 'include');
                     renderSelectionList('ce', 'exclude');
+                    renderSelectionList('ce', 'supportLock');
+                    renderSelectionList('ce', 'excludeSupport');
                     renderEventSelection();
                 }
+                if (state.ui && state.ui.collapsedSections && typeof state.ui.collapsedSections === 'object') {
+                    Object.keys(UI_STATE.collapsedSections).forEach(key => {
+                        if (typeof state.ui.collapsedSections[key] === 'boolean') {
+                            UI_STATE.collapsedSections[key] = state.ui.collapsedSections[key];
+                        }
+                    });
+                }
+                if (state.ui && Array.isArray(state.ui.excludeSvtClassFilters)) {
+                    EXCLUDE_SVT_CLASS_FILTER = new Set(
+                        state.ui.excludeSvtClassFilters.filter(t => Number.isInteger(t))
+                    );
+                }
+                renderExcludeSvtClassFilters();
+                try { renderSelectionList('svt', 'exclude'); } catch(e){}
+                Object.keys(UI_STATE.collapsedSections).forEach(applySectionCollapse);
             } catch (e) {
                 console.error('Failed to load state:', e);
             }
@@ -654,6 +978,8 @@
         // --- 数据加载与初始化 ---
         window.onload = async () => {
             lucide.createIcons();
+            initCollapseToggles();
+            renderExcludeSvtClassFilters();
             
             // 为所有基础配置输入添加自动保存
             ['cost-limit', 'svt-limit', 'ce-limit', 'support-limit', 'base-bond', 'server-select', 'enable-event-bonus'].forEach(id => {
@@ -663,8 +989,14 @@
                         if (id === 'server-select') {
                             SELECTIONS.selectedEvents.clear();
                             renderEventSelection(true);
+                            if (pruneInvalidSupportLocks()) {
+                                saveState();
+                            }
                         } else if (id === 'enable-event-bonus') {
                             renderEventSelection(el.checked);
+                        } else if (id === 'support-limit') {
+                            refreshSupportLockLimitText();
+                            enforceSupportLockLimit(true);
                         }
                         // Update bonus display
                         try { renderSelectionList('svt', 'include'); } catch(e){}
@@ -673,6 +1005,9 @@
                     });
                     if (el.type === 'number' || el.type === 'text') {
                         el.addEventListener('input', saveState);
+                        if (id === 'support-limit') {
+                            el.addEventListener('input', refreshSupportLockLimitText);
+                        }
                     }
                 }
             });
@@ -685,6 +1020,11 @@
                
                // 加载持久化状态
                loadState();
+               refreshSupportLockLimitText();
+               const lockChanged = pruneInvalidSupportLocks() || enforceSupportLockLimit();
+               if (lockChanged) {
+                   saveState();
+               }
                
                renderMainClassFilters();
                renderEventSelection();
@@ -865,7 +1205,13 @@
         // --- 弹窗逻辑 ---
         function openModal(type, list) {
             currentModal = { type, list };
-            document.getElementById('modal-title').textContent = `添加${list === 'include' ? '必选' : '排除'}${type === 'svt' ? '从者' : '礼装'}`;
+            if (type === 'ce' && list === 'supportLock') {
+                document.getElementById('modal-title').textContent = '添加锁定助战礼装';
+            } else if (type === 'ce' && list === 'excludeSupport') {
+                document.getElementById('modal-title').textContent = '添加排除助战礼装';
+            } else {
+                document.getElementById('modal-title').textContent = `添加${list === 'include' ? '必选' : '排除'}${type === 'svt' ? '从者' : '礼装'}`;
+            }
             document.getElementById('modal-search').value = '';
             
             const filterContainer = document.getElementById('modal-filter-container');
@@ -1039,6 +1385,8 @@
                             const hasClass = detail.traits.some(t => FILTER_STATE.classes.has(t));
                             if (!hasClass) return false;
                         }
+                    } else if (currentModal.list === 'supportLock' || currentModal.list === 'excludeSupport') {
+                        if (!isSupportCandidateCe(item)) return false;
                     }
                     return true;
                 })
@@ -1078,7 +1426,14 @@
                     }
                 }
             } else {
-                const key = `${list}${type.charAt(0).toUpperCase() + type.slice(1)}`;
+                if (type === 'ce' && list === 'supportLock') {
+                    const limit = getSupportLimitValue();
+                    if (!SELECTIONS.supportLockCe.has(id) && SELECTIONS.supportLockCe.size >= limit) {
+                        alert(`锁定助战礼装数量不能超过 ${limit} 个`);
+                        return;
+                    }
+                }
+                const key = getSelectionKey(type, list);
                 SELECTIONS[key].add(id);
                 renderSelectionList(type, list);
             }
@@ -1094,7 +1449,7 @@
         }
 
         function removeItem(type, list, id) {
-            const key = `${list}${type.charAt(0).toUpperCase() + type.slice(1)}`;
+            const key = getSelectionKey(type, list);
             if (type === 'svt' && list === 'include') {
                 SELECTIONS.includeSvt.delete(id);
             } else {
@@ -1105,8 +1460,9 @@
         }
 
         function renderSelectionList(type, list) {
-            const key = `${list}${type.charAt(0).toUpperCase() + type.slice(1)}`;
-            const container = document.getElementById(`${list}-${type}-list`);
+            const key = getSelectionKey(type, list);
+            const container = document.getElementById(getSelectionContainerId(type, list));
+            if (!container) return;
             container.innerHTML = '';
             const items = type === 'svt' ? ALL_DATA.servants : ALL_DATA.craftEssences;
             
@@ -1117,6 +1473,12 @@
             selection.forEach(id => {
                 const item = items.find(i => i.id === id);
                 if (item) {
+                    if (type === 'svt' && list === 'exclude' && EXCLUDE_SVT_CLASS_FILTER.size > 0) {
+                        const detail = item.diff.default || Object.values(item.diff)[0];
+                        if (!detail || !detail.traits || !detail.traits.some(t => EXCLUDE_SVT_CLASS_FILTER.has(t))) {
+                            return;
+                        }
+                    }
                     let img, name;
                     if (type === 'svt' && list === 'include') {
                         const diffKey = SELECTIONS.includeSvt.get(id);
@@ -1143,27 +1505,31 @@
             btn.setAttribute('aria-busy', 'true');
             btn.textContent = '计算中...';
 
-            const params = new URLSearchParams();
-            params.append('costlimit', document.getElementById('cost-limit').value);
-            params.append('svtlimit', document.getElementById('svt-limit').value);
-            params.append('celimit', document.getElementById('ce-limit').value);
-            params.append('supportlimit', document.getElementById('support-limit').value);
-            params.append('basebond', document.getElementById('base-bond').value);
-            params.append('server', document.getElementById('server-select').value);
-            params.append('enable_event_bonus', document.getElementById('enable-event-bonus').checked);
-            SELECTIONS.selectedEvents.forEach(id => params.append('selected_events', id));
-
-            SELECTIONS.allowTraits.forEach(id => params.append('allowtraits', id));
-            SELECTIONS.includeSvt.forEach((diff, id) => {
-                params.append('includesvt', id);
-                params.append('includesvtdiff', diff);
-            });
-            SELECTIONS.excludeSvt.forEach(id => params.append('excludesvt', id));
-            SELECTIONS.includeCe.forEach(id => params.append('includece', id));
-            SELECTIONS.excludeCe.forEach(id => params.append('excludece', id));
-
-
             try {
+                const params = new URLSearchParams();
+                params.append('costlimit', document.getElementById('cost-limit').value);
+                params.append('svtlimit', document.getElementById('svt-limit').value);
+                params.append('celimit', document.getElementById('ce-limit').value);
+                params.append('supportlimit', document.getElementById('support-limit').value);
+                params.append('basebond', document.getElementById('base-bond').value);
+                params.append('server', document.getElementById('server-select').value);
+                params.append('enable_event_bonus', document.getElementById('enable-event-bonus').checked);
+                SELECTIONS.selectedEvents.forEach(id => params.append('selected_events', id));
+
+                SELECTIONS.allowTraits.forEach(id => params.append('allowtraits', id));
+                SELECTIONS.includeSvt.forEach((diff, id) => {
+                    params.append('includesvt', id);
+                    params.append('includesvtdiff', diff);
+                });
+                SELECTIONS.excludeSvt.forEach(id => params.append('excludesvt', id));
+                SELECTIONS.includeCe.forEach(id => params.append('includece', id));
+                SELECTIONS.excludeCe.forEach(id => params.append('excludece', id));
+                if (SELECTIONS.supportLockCe.size > getSupportLimitValue()) {
+                    throw new Error('锁定助战礼装数量不能超过助战礼装数量');
+                }
+                SELECTIONS.supportLockCe.forEach(id => params.append('includesupportce', id));
+                SELECTIONS.excludeSupportCe.forEach(id => params.append('excludesupportce', id));
+
                 const response = await fetch('/api/calculate', {
                     method: 'POST',
                     body: params
@@ -1209,7 +1575,10 @@
                         const item = document.createElement('div');
                         item.className = 'event-bonus-item';
                         item.style.border = '1px solid var(--pico-secondary)';
-                        item.innerHTML = `<span class="event-bonus-val" style="background:var(--pico-secondary)">x${(b.bonus/100).toFixed(1)}</span><span class="event-bonus-name" title="${b.name}">${b.name}</span>`;
+                        // Temporary logic change: convert independent multiplier back to additive percent
+                        // In UI it shows as +20% instead of x1.2
+                        const percentBonus = Math.round((b.bonus / 100 - 1) * 100);
+                        item.innerHTML = `<span class="event-bonus-val" style="background:var(--pico-secondary)">+${percentBonus}%</span><span class="event-bonus-name" title="${b.name}">${b.name}</span>`;
                         bonusContainer.appendChild(item);
                     });
                     div.appendChild(bonusContainer);
@@ -1359,6 +1728,19 @@
                         div.appendChild(contributionSpan);
                         
                         wrapper.appendChild(div);
+
+                        const actions = document.createElement('div');
+                        actions.className = 'result-actions';
+                        actions.innerHTML = `
+                            <button class="outline" title="加入必选" onclick="quickAdd(event, 'ce', 'supportLock', ${ce.id})">
+                                <i data-lucide="plus"></i>
+                            </button>
+                            <button class="outline secondary" title="加入排除" onclick="quickAdd(event, 'ce', 'excludeSupport', ${ce.id})">
+                                <i data-lucide="minus"></i>
+                            </button>
+                        `;
+                        wrapper.appendChild(actions);
+
                         supportGrid.appendChild(wrapper);
                     });
                 }
@@ -1371,9 +1753,16 @@
 
         function quickAdd(event, type, list, id, extra) {
             event.stopPropagation();
-            const key = `${list}${type.charAt(0).toUpperCase() + type.slice(1)}`;
+            const key = getSelectionKey(type, list);
             if (key === 'includeSvt') {
                 SELECTIONS[key].set(id, extra || 'default');
+            } else if (key === 'supportLockCe') {
+                const limit = getSupportLimitValue();
+                if (!SELECTIONS[key].has(id) && SELECTIONS[key].size >= limit) {
+                    alert(`锁定助战礼装数量不能超过 ${limit} 个`);
+                    return;
+                }
+                SELECTIONS[key].add(id);
             } else {
                 SELECTIONS[key].add(id);
             }

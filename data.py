@@ -337,7 +337,7 @@ def apply_extra_event_bonuses(processed_servants):
 
 processed = []
 
-remove_list = [2501500]
+remove_list = [2501500, 1002100]
 
 for file in find_files("servants"):
     raw = json.loads(open(file, "r").read())

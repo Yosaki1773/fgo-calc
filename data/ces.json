@@ -205,6 +205,20 @@
         ]
     },
     {
+        "id": 9408390,
+        "name": "至诚的一针",
+        "img": "https://static.atlasacademy.io/JP/EquipFaces/f_94083900.png",
+        "cost": 12,
+        "filters": [
+            [
+                [
+                    2780
+                ],
+                20
+            ]
+        ]
+    },
+    {
         "id": 9408990,
         "name": "迦勒底之人",
         "img": "https://static.atlasacademy.io/JP/EquipFaces/f_94089900.png",
@@ -258,21 +272,6 @@
         "server": "JP"
     },
     {
-        "id": 9408390,
-        "name": "至诚的一针",
-        "img": "https://static.atlasacademy.io/JP/EquipFaces/f_94083900.png",
-        "cost": 12,
-        "filters": [
-            [
-                [
-                    2780
-                ],
-                20
-            ]
-        ],
-        "server": "JP"
-    },
-    {
         "id": 9311320,
         "name": "英灵极点：阿尔托莉雅·潘德拉贡",
         "img": "https://static.atlasacademy.io/JP/EquipFaces/f_93113200.png",
@@ -294,6 +293,21 @@
             [
                 [],
                 2
+            ]
+        ],
+        "server": "JP"
+    },
+    {
+        "id": 9409210,
+        "name": "记忆的大图书馆",
+        "img": "https://static.atlasacademy.io/JP/EquipFaces/f_94092100.png",
+        "cost": 12,
+        "filters": [
+            [
+                [
+                    302
+                ],
+                20
             ]
         ],
         "server": "JP"

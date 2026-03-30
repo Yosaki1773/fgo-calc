@@ -79,11 +79,17 @@ func (h *Handler) Calculate(c *gin.Context) {
 
 	baseBond, _ := strconv.Atoi(c.PostForm("basebond"))
 	supportLimit, _ := strconv.Atoi(c.PostForm("supportlimit"))
+	includeSupportCe := mapStr2Int(c.PostFormArray("includesupportce"))
+	excludeSupportCe := mapStr2Int(c.PostFormArray("excludesupportce"))
 	if supportLimit < 0 {
 		supportLimit = 0
 	}
 	if supportLimit > h.cfg.MaxSupportLimit {
 		c.JSON(http.StatusBadRequest, gin.H{"error": fmt.Sprintf("助战礼装数量不能超过%d个", h.cfg.MaxSupportLimit)})
+		return
+	}
+	if len(includeSupportCe) > supportLimit {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "锁定助战礼装数量不能超过助战礼装数量"})
 		return
 	}
 
@@ -99,6 +105,8 @@ func (h *Handler) Calculate(c *gin.Context) {
 		svtLimit,
 		ceLimit,
 		supportLimit,
+		includeSupportCe,
+		excludeSupportCe,
 		allowTraits,
 		mapStr2Int(c.PostFormArray("includesvt")),
 		c.PostFormArray("includesvtdiff"),
@@ -126,4 +134,3 @@ func mapStr2Int(data []string) []int {
 	}
 	return result
 }
-
