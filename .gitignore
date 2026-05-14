@@ -5,3 +5,4 @@ config.dev.json
 config.prod.json
 deploy.sh
 fgo-calc-backend
+backend/fgo-calc-backend.exe

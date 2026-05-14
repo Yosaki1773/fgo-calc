@@ -352,7 +352,7 @@ for file in find_files("servants"):
 
 apply_extra_event_bonuses(processed)
 
-open('servants.json','w').write(json.dumps(processed, ensure_ascii=False, indent=4))
+open('servants.json','w', encoding='utf-8').write(json.dumps(processed, ensure_ascii=False, indent=4))
 
 os.chdir('..')
 
