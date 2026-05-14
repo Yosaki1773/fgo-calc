@@ -21,9 +21,9 @@ def fetch_git_repo():
             res = os.system("git pull")
             os.chdir("..")
         else:
-            res = os.system("git clone https://github.com/chaldea-center/chaldea-data")
+            res = os.system("git clone https://ghfast.top/https://github.com/chaldea-center/chaldea-data")
         if res == 0: 
-            open("update.txt", "w").write(str(int(time.time())))
+            open("update.txt", "w", encoding='utf-8').write(str(int(time.time())))
             print("Git repo fetched successfully.")
     except Exception as e:
         print(f"Error fetching git repo: {e}")
@@ -37,29 +37,29 @@ def get_translation():
     if not os.path.exists("names"):
         os.makedirs("names")
 
-    traits_raw = json.loads(open("chaldea-data/mappings/trait.json", "r").read())
+    traits_raw = json.loads(open("chaldea-data/mappings/trait.json", "r", encoding='utf-8').read())
     traits = {}
     for k, v in traits_raw.items():
         traits[k] = v["CN"]
-    open("names/traits.json", "w").write(json.dumps(traits, ensure_ascii=False, indent=4))
+    open("names/traits.json", "w", encoding='utf-8').write(json.dumps(traits, ensure_ascii=False, indent=4))
 
-    ce_raw = json.loads(open("chaldea-data/mappings/ce_names.json", "r").read())
+    ce_raw = json.loads(open("chaldea-data/mappings/ce_names.json", "r", encoding='utf-8').read())
     ce = {}
     for k, v in ce_raw.items():
         ce[k] = v["CN"]
-    open("names/ce.json", "w").write(json.dumps(ce, ensure_ascii=False, indent=4))
+    open("names/ce.json", "w", encoding='utf-8').write(json.dumps(ce, ensure_ascii=False, indent=4))
 
-    servant_raw = json.loads(open("chaldea-data/mappings/svt_names.json", "r").read())
+    servant_raw = json.loads(open("chaldea-data/mappings/svt_names.json", "r", encoding='utf-8').read())
     servant = {}
     for k, v in servant_raw.items():
         servant[k] = v["CN"]
-    open("names/servant.json", "w").write(json.dumps(servant, ensure_ascii=False, indent=4))
+    open("names/servant.json", "w", encoding='utf-8').write(json.dumps(servant, ensure_ascii=False, indent=4))
 
-    costume_raw = json.loads(open("chaldea-data/mappings/costume_names.json", "r").read())
+    costume_raw = json.loads(open("chaldea-data/mappings/costume_names.json", "r", encoding='utf-8').read())
     costume = {}
     for k, v in costume_raw.items():
         costume[k] = v["CN"]
-    open("names/costume.json", "w").write(json.dumps(costume, ensure_ascii=False, indent=4))
+    open("names/costume.json", "w", encoding='utf-8').write(json.dumps(costume, ensure_ascii=False, indent=4))
 
 get_translation()
 
@@ -72,7 +72,7 @@ def find_files(name):
     return files
 
 def translate(text, type):
-    mapping = json.loads(open(f"names/{type}.json", "r").read())
+    mapping = json.loads(open(f"names/{type}.json", "r", encoding='utf-8').read())
     if str(text) in mapping:
         return mapping[str(text)]
     return text
@@ -160,6 +160,7 @@ exclude_events = [80059, 80077, 80044, 80072]
 def process_servant(test):
     data = {}
     data['id'] = test['id']
+    data['collectionNo'] = test['collectionNo']
 
     data['name'] = translate(test['name'], "servant")
     # data['img'] = test['extraAssets']['faces']['costume']
@@ -340,7 +341,7 @@ processed = []
 remove_list = [2501500, 1002100]
 
 for file in find_files("servants"):
-    raw = json.loads(open(file, "r").read())
+    raw = json.loads(open(file, "r", encoding='utf-8').read())
     for servant in raw:
         try:
             if servant['id'] in remove_list:

@@ -4,7 +4,7 @@ import os
 os.chdir('data')
 
 def translate(text, type):
-    mapping = json.loads(open(f"names/{type}.json", "r").read())
+    mapping = json.loads(open(f"names/{type}.json", "r", encoding='utf-8').read())
     if str(text) in mapping:
         if mapping[str(text)]:
             return mapping[str(text)]
@@ -13,7 +13,7 @@ def translate(text, type):
 ces = []
 
 for i in range(1, 7):
-    ces += json.loads(open(f"chaldea-data/dist/craftEssences.{i}.json", "r").read())
+    ces += json.loads(open(f"chaldea-data/dist/craftEssences.{i}.json", "r", encoding='utf-8').read())
 
 def find_ce(id):
     for ce in ces:
@@ -63,6 +63,6 @@ ce_data.append(get_ce(9311450, [([], 2)], server="JP"))
 
 ce_data.append(get_ce(9409210, [([302], 20)], server="JP"))
 
-open('ces.json','w').write(json.dumps(ce_data, ensure_ascii=False, indent=4))
+open('ces.json','w', encoding='utf-8').write(json.dumps(ce_data, ensure_ascii=False, indent=4))
 
 # print(get_ce(9311450, [([], 2)]))
