@@ -387,7 +387,6 @@
             border-radius: 50%;
             padding: 0;
             margin: 0;
-            height: 24px;
             line-height: 1;
             display: flex;
             align-items: center;
@@ -405,16 +404,101 @@
             transition: all 0.5s ease-in-out;
             animation: fadeIn 0.5s;
         }
+
+        .picker {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            border: 2px dashed var(--pico-muted-border-color);
+            border-radius: var(--pico-border-radius);
+            margin-bottom: 1.5rem;
+            background: rgba(var(--pico-primary-rgb), 0.03);
+            transition: border-color 0.3s;
+        }
+        .picker:hover {
+            border-color: var(--pico-primary);
+        }
+        .picker input[type="file"] {
+            display: none;
+        }
+        .picker .upload-label {
+            margin-bottom: 0.5rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            padding: 0.5rem 1.5rem;
+            border-radius: var(--pico-border-radius);
+            background: var(--pico-primary);
+            color: white;
+            transition: transform 0.2s, background 0.2s;
+            font-weight: bold;
+        }
+        .picker .upload-label:hover {
+            background: var(--pico-primary-hover);
+            transform: scale(1.02);
+        }
+        .picker .upload-hint {
+            font-size: 0.75rem;
+            color: var(--pico-muted-color);
+        }
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
         
+        .import-filter-card {
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: var(--pico-card-background-color);
+            border-radius: var(--pico-border-radius);
+            border: 1px solid var(--pico-border-color);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .import-filter-title {
+            font-size: 0.85rem;
+            font-weight: bold;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--pico-primary);
+        }
+        .import-filter-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 0.5rem;
+        }
+        .import-filter-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.75rem;
+            padding: 0.4rem 0.6rem;
+            background: rgba(var(--pico-primary-rgb), 0.03);
+            border-radius: 6px;
+            border: 1px solid transparent;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+        .import-filter-item:hover {
+            background: rgba(var(--pico-primary-rgb), 0.08);
+            border-color: rgba(var(--pico-primary-rgb), 0.2);
+        }
+        .import-filter-item input {
+            margin-bottom: 0;
+        }
+
         @media (max-width: 768px) {
             body {
                 padding: 0.5rem;
             }
             .grid-config {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .import-filter-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
@@ -486,6 +570,23 @@
             </div>
             <div id="main-class-filters" class="filter-group" style="margin-bottom: 1.5rem; justify-content: center; gap: 8px;">
                 <!-- 职阶图标将在这里动态生成 -->
+            </div>
+
+            <div class="picker">
+                <label class="upload-label">
+                    <i data-lucide="upload-cloud"></i> 导入 Chaldea/JSON 数据
+                    <input type="file" id="json-upload" accept=".json" onchange="handleJsonUpload(event)">
+                </label>
+                <div class="upload-hint">支持导入 Chaldea 导出的 JSON 文件，将自动排除已满 15 绊的从者</div>
+            </div>
+
+            <div id="import-filter-container" class="import-filter-card" style="display: none;">
+                <div class="import-filter-title">
+                    <i data-lucide="list-filter" style="width: 18px;"></i> 已导入数据过滤（批量加入排除列表）
+                </div>
+                <div id="import-filter-options" class="import-filter-grid">
+                    <!-- 动态生成过滤选项 -->
+                </div>
             </div>
 
             <div class="grid">
@@ -664,8 +765,10 @@
             supportLockCe: new Set(),
             excludeSupportCe: new Set(),
             allowTraits: new Set(),
-            selectedEvents: new Set()
+            selectedEvents: new Set(),
+            selectedImportTypes: new Set([1]) // 默认勾选 15 绊
         };
+        const IMPORTED_SVT_STORAGE_KEY = 'fgo-calc-imported-svts';
         let currentModal = { type: '', list: '' };
 
         const STAR_TRAITS = {
@@ -1818,6 +1921,154 @@
             const div = document.createElement('div');
             div.className = 'placeholder';
             return div;
+        }
+
+        const BOND_TYPE_LABELS = {
+            1: "(满15绊)",
+            2: "(11-14绊已满)",
+            3: "(10-14绊未满)",
+            4: "(10绊已满)",
+            5: "(9绊未满)",
+            6: "(9绊以下)"
+        };
+
+        function renderImportFilterUI(stats) {
+            const container = document.getElementById('import-filter-container');
+            const options = document.getElementById('import-filter-options');
+            if (!container || !options) return;
+
+            container.style.display = 'block';
+            options.innerHTML = '';
+
+            Object.keys(BOND_TYPE_LABELS).forEach(typeKey => {
+                const type = Number(typeKey);
+                const count = stats[type] || 0;
+                
+                const item = document.createElement('label');
+                item.className = 'import-filter-item';
+                
+                const input = document.createElement('input');
+                input.type = 'checkbox';
+                input.checked = SELECTIONS.selectedImportTypes.has(type);
+                input.onchange = (e) => {
+                    if (e.target.checked) SELECTIONS.selectedImportTypes.add(type);
+                    else SELECTIONS.selectedImportTypes.delete(type);
+                    applyImportFilters();
+                };
+
+                item.appendChild(input);
+                item.append(`${type}. ${BOND_TYPE_LABELS[type]} : ${count}`);
+                options.appendChild(item);
+            });
+            refreshIcons();
+        }
+
+        function applyImportFilters() {
+            const saved = localStorage.getItem(IMPORTED_SVT_STORAGE_KEY);
+            if (!saved) return;
+            try {
+                const servantsList = JSON.parse(saved);
+                
+                // 创建 collectionNo 到真实 id 的映射
+                const collNoToIdMap = new Map();
+                ALL_DATA.servants.forEach(svt => {
+                    collNoToIdMap.set(Number(svt.collectionNo), Number(svt.id));
+                });
+
+                // 先根据导入数据进行增减
+                servantsList.forEach(s => {
+                    // s.id 实际上是 collectionNo
+                    const realId = collNoToIdMap.get(Number(s.id));
+                    if (!realId) return;
+
+                    if (SELECTIONS.selectedImportTypes.has(s.type)) {
+                        SELECTIONS.excludeSvt.add(realId);
+                    } else {
+                        // 如果不再选中该类型，且该从者在导入列表中，则移除
+                        SELECTIONS.excludeSvt.delete(realId);
+                    }
+                });
+
+                renderSelectionList('svt', 'exclude');
+                saveState();
+            } catch (e) {
+                console.error('Apply import filters failed:', e);
+            }
+        }
+
+        async function handleJsonUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                try {
+                    const data = JSON.parse(e.target.result);
+                    const curUserKey = data.curUserKey;
+                    const users = data.users;
+                    
+                    if (!users || !curUserKey || !users[curUserKey]) {
+                        throw new Error("JSON 格式不正确：未找到 users 或 curUserKey 字段。");
+                    }
+                    
+                    const userServants = users[curUserKey].servants;
+
+                    const servantsList = Object.keys(userServants).map(key => {
+                        const svt = userServants[key];
+                        const bondLevel = svt.bond;
+                        const bondLimit = svt.cur.bondLimit;
+                        
+                        let type = 0;
+                        if (bondLevel === bondLimit) {
+                            if (bondLevel === 15) type = 1;
+                            else if (bondLevel > 10) type = 2;
+                            else if (bondLevel === 10) type = 4;
+                        } else {
+                            if (bondLevel >= 10) type = 3;
+                            else if (bondLevel >= 9) type = 5;
+                            else type = 6;
+                        }
+
+                        return {
+                            id: key,
+                            bondLevel,
+                            bondLimit,
+                            type
+                        };
+                    });
+                    
+                    const stats = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0 };
+                    servantsList.forEach(s => {
+                        if (s.type >= 1 && s.type <= 6) stats[s.type]++;
+                    });
+
+                    // 存入 localStorage
+                    localStorage.setItem(IMPORTED_SVT_STORAGE_KEY, JSON.stringify(servantsList));
+
+                    // 渲染过滤 UI
+                    renderImportFilterUI(stats);
+                    
+                    // 执行一次过滤同步
+                    applyImportFilters();
+
+                    const resultMsg = [
+                        `解析成功！从者羁绊统计：`,
+                        `1. ${BOND_TYPE_LABELS[1]}: ${stats[1]}`,
+                        `2. ${BOND_TYPE_LABELS[2]}: ${stats[2]}`,
+                        `3. ${BOND_TYPE_LABELS[3]}: ${stats[3]}`,
+                        `4. ${BOND_TYPE_LABELS[4]}: ${stats[4]}`,
+                        `5. ${BOND_TYPE_LABELS[5]}: ${stats[5]}`,
+                        `6. ${BOND_TYPE_LABELS[6]}: ${stats[6]}`
+                    ].join('\n');
+                    alert(resultMsg);
+                } catch (err) {
+                    console.error('JSON Parse Error:', err);
+                    alert("解析失败：" + err.message);
+                } finally {
+                    event.target.value = '';
+                }
+            };
+            reader.readAsText(file);
         }
     </script>
 </body>
