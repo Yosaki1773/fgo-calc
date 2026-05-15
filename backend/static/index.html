@@ -99,6 +99,19 @@
             font-weight: bold;
             margin-top: 2px;
         }
+        .avatar-container .bond-level {
+            position: absolute;
+            top: 4px;
+            left: 4px;
+            background: rgba(0, 0, 0, 0.6);
+            color: #ffb74d;
+            font-size: 0.65rem;
+            padding: 1px 4px;
+            border-radius: 4px;
+            font-weight: bold;
+            z-index: 10;
+            pointer-events: none;
+        }
         .avatar-container .remove-btn {
             position: absolute;
             top: -8px;
@@ -600,6 +613,7 @@
                         </button>
                         <h6>必选从者</h6>
                         <button class="outline btn-add" onclick="openModal('svt', 'include')"><i data-lucide="user-plus"></i> 添加</button>
+                        <button class="outline secondary btn-add" onclick="clearList('svt', 'include')"><i data-lucide="trash-2"></i> 清空</button>
                     </div>
                     <div class="selection-grid" id="include-svt-list"></div>
                 </div>
@@ -610,6 +624,7 @@
                         </button>
                         <h6>排除从者</h6>
                         <button class="outline btn-add" onclick="openModal('svt', 'exclude')"><i data-lucide="user-minus"></i> 添加</button>
+                        <button class="outline secondary btn-add" onclick="clearList('svt', 'exclude')"><i data-lucide="trash-2"></i> 清空</button>
                     </div>
                     <div id="exclude-svt-panel" class="collapsible-panel">
                         <div id="exclude-svt-class-filters" class="filter-group exclude-svt-filter-group"></div>
@@ -1580,6 +1595,20 @@
             saveState();
         }
 
+        function clearList(type, list) {
+            if (!confirm(`确定要清空${list === 'include' ? '必选' : '排除'}${type === 'svt' ? '从者' : '礼装'}列表吗？`)) {
+                return;
+            }
+            const key = getSelectionKey(type, list);
+            if (type === 'svt' && list === 'include') {
+                SELECTIONS.includeSvt.clear();
+            } else {
+                SELECTIONS[key].clear();
+            }
+            renderSelectionList(type, list);
+            saveState();
+        }
+
         function renderSelectionList(type, list) {
             const key = getSelectionKey(type, list);
             const container = document.getElementById(getSelectionContainerId(type, list));
@@ -1713,6 +1742,20 @@
             const list = document.getElementById('results-list');
             list.innerHTML = '';
 
+            // 加载导入的从者数据以显示羁绊等级
+            const savedImported = localStorage.getItem(IMPORTED_SVT_STORAGE_KEY);
+            let importedBondMap = new Map();
+            if (savedImported) {
+                try {
+                    const servantsList = JSON.parse(savedImported);
+                    servantsList.forEach(s => {
+                        importedBondMap.set(Number(s.id), s.bondLevel);
+                    });
+                } catch (e) {
+                    console.error('Failed to parse saved imported servants for results:', e);
+                }
+            }
+
             if (duration !== undefined) {
                 const p = document.createElement('p');
                 p.style.textAlign = 'right';
@@ -1763,6 +1806,15 @@
                             name = `${svt.name} (${detail.name})`;
                         }
                         const div = createAvatar(svt.id, name, detail.img, () => showSvtTraits(svt, diffKey));
+
+                        // 显示羁绊等级
+                        const bondLevel = importedBondMap.get(Number(svt.collectionNo));
+                        if (bondLevel !== undefined) {
+                            const bondSpan = document.createElement('div');
+                            bondSpan.className = 'bond-level';
+                            bondSpan.textContent = `Lv.${bondLevel}`;
+                            div.appendChild(bondSpan);
+                        }
 
                         renderEventBonuses(div, svt);
                         
